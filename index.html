@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panama Transit & Tours - Traslados y Tours en Panamá</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
@@ -181,11 +183,11 @@
     }
 
     /* ============================================================
-               4. HERO (Imagen Real de la Ciudad de Panamá)
+               4. HERO
                ============================================================ */
     .hero {
       background: linear-gradient(135deg, rgba(0, 30, 64, 0.88), rgba(0, 51, 102, 0.80)),
-                  url('https://images.unsplash.com/photo-1549877475-7b56f4d99c33?auto=format&fit=crop&w=1920&q=80');
+                  url('https://placehold.co/1920x1080/001e40/FFFFFF?text=Panama+City+Skyline');
       background-size: cover;
       background-position: center;
       padding: 100px 24px;
@@ -457,7 +459,20 @@
       justify-content: space-between;
       gap: 30px;
       box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
+    .transfer-card .transfer-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 40%;
+      opacity: 0.15;
+      object-fit: cover;
+      object-position: right;
+    }
+    .transfer-info { position: relative; z-index: 1; }
     .transfer-info h3 {
       font-family: var(--font-heading);
       font-weight: 700;
@@ -470,7 +485,7 @@
       opacity: 0.8;
       max-width: 400px;
     }
-    .transfer-price { display: flex; flex-direction: column; align-items: center; }
+    .transfer-price { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
     .transfer-price .price-tag {
       font-family: var(--font-heading);
       font-weight: 800;
@@ -499,6 +514,8 @@
       gap: 12px;
       background: var(--accent);
       color: #fff;
+      position: relative;
+      z-index: 1;
     }
     .btn-lg:hover {
       background: var(--accent-hover);
@@ -698,6 +715,7 @@
 
       .transfer-card { flex-direction: column; text-align: center; padding: 32px 24px; }
       .transfer-info p { max-width: 100%; }
+      .transfer-card .transfer-bg { display: none; }
 
       .features-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .feature-item { padding: 24px 16px; }
@@ -721,6 +739,9 @@
 </head>
 <body>
 
+  <!-- ============================================================
+  HEADER
+  ============================================================ -->
   <header class="header" id="header">
     <div class="header-inner">
       <a href="#" class="logo">
@@ -751,6 +772,9 @@
     </div>
   </header>
 
+  <!-- ============================================================
+  HERO
+  ============================================================ -->
   <section class="hero" id="home">
     <div class="hero-content">
       <h1>Descubre Panamá con un <i>Experto Local</i></h1>
@@ -769,6 +793,9 @@
     </div>
   </section>
 
+  <!-- ============================================================
+  SECCIÓN TOURS
+  ============================================================ -->
   <section class="section-tours" id="tours">
     <div class="container">
 
@@ -777,6 +804,7 @@
         <p>Explora la ciudad, la selva, el Canal y las playas con guías locales apasionados.</p>
       </div>
 
+      <!-- DISCLAIMER -->
       <div class="disclaimer-box">
         <i class="fas fa-info-circle"></i>
         <div>
@@ -784,13 +812,14 @@
         </div>
       </div>
 
+      <!-- ===== CATEGORÍA 1: CITY TOURS ===== -->
       <div class="tour-category">
         <h3><i class="fas fa-city"></i> City Tours</h3>
         <div class="tour-grid">
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1627564559865-900f68056499?auto=format&fit=crop&w=600&h=400&q=80" alt="Esclusas de Miraflores o Casco Viejo">
+              <img src="https://i.imgur.com/ZLpwqoe.jpeg" alt="Tour Ciudad y Canal">
               <span class="price-chip">Desde $80</span>
             </div>
             <div class="tour-card-body">
@@ -806,7 +835,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?auto=format&fit=crop&w=600&h=400&q=80" alt="Panamá Viejo o calles empedradas del Casco">
+              <img src="https://i.imgur.com/4P08Qka.jpeg" alt="Tour Histórico">
               <span class="price-chip">Desde $99</span>
             </div>
             <div class="tour-card-body">
@@ -822,7 +851,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&h=400&q=80" alt="Mono + Canal + Ciudad">
+              <img src="https://i.imgur.com/0Mc2pa8.png" alt="Combo">
               <span class="price-chip">Desde $139</span>
             </div>
             <div class="tour-card-body">
@@ -839,13 +868,14 @@
         </div>
       </div>
 
+      <!-- ===== CATEGORÍA 2: NATURALEZA Y ECO ===== -->
       <div class="tour-category">
         <h3><i class="fas fa-leaf"></i> Naturaleza y Eco-Aventura</h3>
         <div class="tour-grid">
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&h=400&q=80" alt="Monos en el bosque o bote en el Canal">
+              <img src="https://i.imgur.com/qlD04m1.jpeg" alt="Isla de los Monos">
               <span class="price-chip">Desde $99</span>
             </div>
             <div class="tour-card-body">
@@ -861,7 +891,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=600&h=400&q=80" alt="Indígenas en canoa o cascada">
+              <img src="https://i.imgur.com/F3xl8oc.jpeg" alt="Aldea Emberá">
               <span class="price-chip">Desde $116</span>
             </div>
             <div class="tour-card-body">
@@ -877,7 +907,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&w=600&h=400&q=80" alt="Paisaje del valle, cascada o mercado">
+              <img src="https://i.imgur.com/Gs4yy6D.jpeg" alt="El Valle de Antón">
               <span class="price-chip">Desde $125</span>
             </div>
             <div class="tour-card-body">
@@ -894,13 +924,14 @@
         </div>
       </div>
 
+      <!-- ===== CATEGORÍA 3: PLAYA Y AVENTURA ===== -->
       <div class="tour-category">
         <h3><i class="fas fa-umbrella-beach"></i> Playas y Aventura</h3>
         <div class="tour-grid">
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&h=400&q=80" alt="Playa caribeña, fuerte o snorkel">
+              <img src="https://i.imgur.com/EoNNlwI.jpeg" alt="Aventura Caribe">
               <span class="price-chip">Desde $179</span>
             </div>
             <div class="tour-card-body">
@@ -916,7 +947,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&h=400&q=80" alt="Playa blanca, agua turquesa o iguanas">
+              <img src="https://i.imgur.com/EoNNlwI.jpeg" alt="Isla Iguana">
               <span class="price-chip">Desde $159</span>
             </div>
             <div class="tour-card-body">
@@ -932,7 +963,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&h=400&q=80" alt="Catamarán o vista de la isla">
+              <img src="https://i.imgur.com/9hAzdA2.jpeg" alt="Catamarán Taboga">
               <span class="price-chip">Desde $99</span>
               <span class="price-chip incluye">¡Todo incluido!</span>
             </div>
@@ -950,13 +981,14 @@
         </div>
       </div>
 
+      <!-- ===== CATEGORÍA 4: TOURS ESPECIALES ===== -->
       <div class="tour-category">
         <h3><i class="fas fa-star"></i> Tours Especiales</h3>
         <div class="tour-grid">
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=600&h=400&q=80" alt="Fuerte colonial o esclusas Agua Clara">
+              <img src="https://i.imgur.com/PYsOwOk.jpeg" alt="Fuerte San Lorenzo">
               <span class="price-chip">Desde $125</span>
             </div>
             <div class="tour-card-body">
@@ -972,7 +1004,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=600&h=400&q=80" alt="Barco Pacific Queen en el Canal">
+              <img src="https://i.imgur.com/fz20d3z.jpeg" alt="Tránsito Canal">
               <span class="price-chip">Desde $149</span>
             </div>
             <div class="tour-card-body">
@@ -988,7 +1020,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=600&h=400&q=80" alt="Ballena jorobada o bote en el mar">
+              <img src="https://i.imgur.com/JXT5Yp7.jpeg" alt="Ballenas">
               <span class="price-chip">Desde $108</span>
             </div>
             <div class="tour-card-body">
@@ -1004,7 +1036,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=600&h=400&q=80" alt="Tour personalizado en ciudad">
+              <img src="https://i.imgur.com/t1sOAzi.jpeg" alt="Escala Privada">
               <span class="price-chip">Desde $80</span>
             </div>
             <div class="tour-card-body">
@@ -1021,13 +1053,14 @@
         </div>
       </div>
 
+      <!-- ===== CATEGORÍA 5: TOURS ADICIONALES ===== -->
       <div class="tour-category">
         <h3><i class="fas fa-ellipsis-h"></i> Tours Adicionales (bajo demanda)</h3>
         <div class="tour-grid">
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&h=400&q=80" alt="Aves tropicales o pipeline road">
+              <img src="https://i.imgur.com/OUi2x77.jpeg" alt="Bird Watching">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1043,7 +1076,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1517462964-21fdcec3f25b?auto=format&fit=crop&w=600&h=400&q=80" alt="Pesca deportiva en el lago">
+              <img src="https://i.imgur.com/lWpiGR4.jpeg" alt="Pesca Lago Gatún">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1059,7 +1092,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&h=400&q=80" alt="Barco de pesca en mar abierto">
+              <img src="https://i.imgur.com/k47UdSQ.jpeg" alt="Pesca Alta Mar">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1075,7 +1108,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&h=400&q=80" alt="Bicicletas en la ciudad o Ciclovía">
+              <img src="https://i.imgur.com/M4Xat9K.jpeg" alt="Bike Tour">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1091,7 +1124,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&h=400&q=80" alt="Bares o vida nocturna en Casco Viejo">
+              <img src="https://i.imgur.com/IkeoDXB.png" alt="Bar Crawl">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1107,7 +1140,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1508873696983-2df5199e4009?auto=format&fit=crop&w=600&h=400&q=80" alt="Helicóptero sobre la ciudad">
+              <img src="https://i.imgur.com/9bLe4EW.jpeg" alt="Helicopter Tour">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1123,7 +1156,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&h=400&q=80" alt="Platos típicos panameños">
+              <img src="https://i.imgur.com/LEgsnYi.jpeg" alt="Food Tour">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1139,7 +1172,7 @@
 
           <div class="tour-card">
             <div class="tour-card-image">
-              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&h=400&q=80" alt="Selva o comunidad indígena Darién">
+              <img src="https://i.imgur.com/Ba4qHyu.jpeg" alt="Darien">
               <span class="price-chip">Bajo consulta</span>
             </div>
             <div class="tour-card-body">
@@ -1159,17 +1192,18 @@
     </div>
   </section>
 
+  <!-- ============================================================
+  SECCIÓN TRASLADOS
+  ============================================================ -->
   <section class="section-transfers" id="transfers">
     <div class="container">
       <div class="transfer-card">
+        <img src="https://i.imgur.com/TiFp3EE.jpeg" alt="Vehículo ejecutivo" class="transfer-bg">
         <div class="transfer-info">
           <h3><i class="fas fa-shuttle-van"></i> Traslado Aeropuerto</h3>
-          <p>Llegada o salida desde el Aeropuerto Internacional de Tocumen. Servicio privado, puntual y con un vehículo ejecutivo y cómodo.</p>
+          <p>Llegada o salida desde el Aeropuerto Internacional de Tocumen. Servicio privado, puntual y con conductor profesional.</p>
         </div>
         <div class="transfer-price">
-          <div style="max-width: 150px; margin-bottom: 12px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
-            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=300&h=200&q=80" alt="Vehículo de transporte ejecutivo">
-          </div>
           <span class="price-tag">$25</span>
           <span class="price-sub">por vehículo (hasta 4 pax)</span>
         </div>
@@ -1180,6 +1214,9 @@
     </div>
   </section>
 
+  <!-- ============================================================
+  FEATURES
+  ============================================================ -->
   <section class="section-features" id="about">
     <div class="container">
       <div class="section-header">
@@ -1211,6 +1248,9 @@
     </div>
   </section>
 
+  <!-- ============================================================
+  FOOTER
+  ============================================================ -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1224,7 +1264,6 @@
         </a>
       </div>
       <div>
-        options
         <h5>Explora</h5>
         <ul>
           <li><a href="#tours">Tours</a></li>
@@ -1250,15 +1289,21 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2026 Panama Transit & Tours. Todos los derechos reservados.
+      &copy; 2025 Panama Transit & Tours. Todos los derechos reservados.
     </div>
   </footer>
 
+  <!-- ============================================================
+  WHATSAPP FAB
+  ============================================================ -->
   <a href="#" class="whatsapp-fab" id="whatsappFab" onclick="openWhatsApp('Hola, vengo de Panama Transit & Tours. Necesito ayuda con mi viaje.')">
     <i class="fab fa-whatsapp"></i>
     <span class="tooltip">¿Necesitas ayuda?</span>
   </a>
 
+  <!-- ============================================================
+  JAVASCRIPT
+  ============================================================ -->
   <script>
     // 1. Configuración de WhatsApp
     const PHONE = '50768468733';
