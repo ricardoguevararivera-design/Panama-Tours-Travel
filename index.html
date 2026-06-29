@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panama Transit & Tours - Traslados y Tours en Panamá</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ============================================================
+               1. VARIABLES CSS
+               ============================================================ */
+    :root {
+      --primary: #001e40;
+      --on-primary: #ffffff;
+      --primary-container: #003366;
+      --on-primary-container: #799dd6;
+      --secondary: #006d3d;
+      --on-secondary: #ffffff;
+      --accent: #ea8000;
+      --accent-hover: #d97000;
+      --surface: #f7f9fb;
+      --surface-dim: #d8dadc;
+      --surface-container-lowest: #ffffff;
+      --on-surface: #191c1e;
+      --on-surface-variant: #43474f;
+      --shadow-sm: 0px 2px 8px rgba(0, 51, 102, 0.06);
+      --shadow-md: 0px 4px 20px rgba(0, 51, 102, 0.08);
+      --shadow-lg: 0px 8px 40px rgba(0, 51, 102, 0.12);
+      --radius-md: 0.5rem;
+      --radius-lg: 1rem;
+      --radius-full: 9999px;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+      --container-max: 1200px;
+      --section-padding: 80px;
+    }
+
+    /* ============================================================
+               2. RESET Y BASE
+               ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--surface);
+      color: var(--on-surface);
+      line-height: 1.6;
+      padding-top: 72px;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+               3. HEADER
+               ============================================================ */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--shadow-sm);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: var(--shadow-md); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo i { color: var(--secondary); font-size: 1.5rem; }
+    .logo span { color: var(--accent); }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-list a {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--on-surface);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-list a:hover { color: var(--primary); }
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-list a:hover::after { width: 100%; }
+
+    .nav-btn {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 20px;
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .nav-btn-outline:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .nav-btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+    }
+    .nav-btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: scale(1.02);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ============================================================
+               4. HERO
+               ============================================================ */
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 30, 64, 0.88), rgba(0, 51, 102, 0.80)),
+                  url('images/hero-panama.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 24px;
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 72px);
+      text-align: center;
+    }
+    .hero-content { max-width: 800px; margin: 0 auto; color: #fff; }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero h1 i { color: var(--accent); font-style: normal; }
+    .hero p {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .btn {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 36px;
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-3px);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(234,128,0,0.35);
+    }
+
+    /* ============================================================
+               5. SECCIÓN TOURS
+               ============================================================ */
+    .section-tours {
+      padding: var(--section-padding) 24px;
+      background: var(--surface);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--on-surface-variant);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Disclaimer */
+    .disclaimer-box {
+      background: #fff8e6;
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.95rem;
+      color: var(--on-surface-variant);
+      box-shadow: var(--shadow-sm);
+    }
+    .disclaimer-box i {
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-top: 2px;
+    }
+    .disclaimer-box strong { color: var(--primary); }
+
+    .tour-category {
+      margin-bottom: 48px;
+    }
+    .tour-category:last-child { margin-bottom: 0; }
+    .tour-category h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* Tarjeta */
+    .tour-card {
+      background: var(--surface-container-lowest);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .tour-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .tour-card-image {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #d8dadc;
+      overflow: hidden;
+    }
+    .tour-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .tour-card:hover .tour-card-image img { transform: scale(1.03); }
+
+    .price-chip {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--secondary);
+      color: var(--on-secondary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+    .price-chip.incluye {
+      background: var(--accent);
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      top: 60px;
+    }
+
+    .tour-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tour-card-body h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    .tour-card-body p {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .tour-card-body .meta {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 600;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .tour-card-body .meta i { margin-right: 4px; }
+    .tour-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-sm-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-sm-outline:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-sm-whatsapp {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+    }
+    .btn-sm-whatsapp:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    /* ============================================================
+               6. TRASLADOS
+               ============================================================ */
+    .section-transfers {
+      padding: var(--section-padding) 24px;
+      background: var(--surface-container-lowest);
+      border-top: 1px solid var(--surface-dim);
+      border-bottom: 1px solid var(--surface-dim);
+    }
+    .transfer-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      box-shadow: var(--shadow-lg);
+    }
+    .transfer-info h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 28px;
+    }
+    .transfer-info h3 i { color: var(--accent); }
+    .transfer-info p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      opacity: 0.8;
+      max-width: 400px;
+    }
+    .transfer-price { display: flex; flex-direction: column; align-items: center; }
+    .transfer-price .price-tag {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 40px;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .transfer-price .price-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .btn-lg {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-lg:hover {
+      background: var(--accent-hover);
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(234,128,0,0.4);
+    }
+
+    /* ============================================================
+               7. FEATURES
+               ============================================================ */
+    .section-features {
+      padding: var(--section-padding) 24px;
+      background: var(--surface);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .feature-item {
+      text-align: center;
+      background: var(--surface-container-lowest);
+      padding: 32px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .feature-item .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(0, 109, 61, 0.10);
+      color: var(--secondary);
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .feature-item h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--primary);
+    }
+    .feature-item p {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      margin-top: 6px;
+    }
+
+    /* ============================================================
+               8. FOOTER
+               ============================================================ */
+    .footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.8);
+      padding: 48px 24px 24px;
+    }
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 32px;
+    }
+    .footer-brand .logo { color: #fff; margin-bottom: 12px; }
+    .footer-brand p { font-size: 0.95rem; opacity: 0.7; max-width: 300px; }
+    .footer h5 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer ul a { font-size: 0.9rem; opacity: 0.7; transition: opacity 0.2s; }
+    .footer ul a:hover { opacity: 1; }
+    .footer ul a i { margin-right: 8px; color: var(--accent); }
+    .footer-whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+    .footer-whatsapp-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+    .footer-bottom {
+      max-width: var(--container-max);
+      margin: 24px auto 0;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ============================================================
+               9. WHATSAPP FAB
+               ============================================================ */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: #25D366;
+      color: #fff;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+    }
+    .whatsapp-fab .tooltip {
+      position: absolute;
+      right: 72px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .whatsapp-fab:hover .tooltip { opacity: 1; }
+
+    /* ============================================================
+               10. RESPONSIVE
+               ============================================================ */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .tour-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      body { padding-top: 64px; }
+      .header { height: 64px; }
+      .header-inner { padding: 0 16px; }
+      .hamburger { display: flex; }
+      .nav-list {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 24px 20px 40px;
+        gap: 16px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-120%);
+        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-bottom: 1px solid var(--surface-dim);
+      }
+      .nav-list.open { transform: translateY(0); }
+      .nav-list a { font-size: 1.1rem; width: 100%; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+      .nav-list .nav-btn { width: 100%; justify-content: center; margin-top: 8px; }
+
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .hero { padding: 60px 16px 80px; min-height: auto; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; padding: 14px 24px; }
+
+      .tour-grid { grid-template-columns: 1fr; gap: 20px; }
+      .section-header h2 { font-size: 26px; }
+
+      .transfer-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+      .transfer-info p { max-width: 100%; }
+
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .feature-item { padding: 24px 16px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-brand p { max-width: 100%; }
+      .footer-whatsapp-btn { justify-content: center; }
+
+      .whatsapp-fab { width: 56px; height: 56px; font-size: 28px; bottom: 20px; right: 20px; }
+      .whatsapp-fab .tooltip { display: none; }
+
+      .disclaimer-box { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .transfer-price .price-tag { font-size: 32px; }
+      .btn-lg { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+  HEADER
+  ============================================================ -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <i class="fas fa-route"></i>
+        Panama <span>Transit</span> & Tours
+      </a>
+      <nav>
+        <ul class="nav-list" id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#tours">Tours</a></li>
+          <li><a href="#transfers">Transfers</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li>
+            <a href="#" class="nav-btn nav-btn-outline" onclick="openWhatsApp('Hola, tengo una consulta general sobre sus servicios de Panama Transit & Tours.')">
+              <i class="fab fa-whatsapp"></i> Contact
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-btn nav-btn-primary" onclick="openWhatsApp('Hola, quiero reservar un traslado con Panama Transit & Tours. Mi vuelo llega el [FECHA] a las [HORA]. Somos [NÚMERO] personas.')">
+              <i class="fas fa-calendar-check"></i> Book Now
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+  HERO
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Descubre Panamá con un <i>Experto Local</i></h1>
+      <p>
+        Tours personalizados y traslados seguros con la confianza de un conductor profesional.
+        Disfruta de un viaje sin preocupaciones y con el mejor confort.
+      </p>
+      <div class="hero-buttons">
+        <a href="#tours" class="btn btn-secondary">
+          <i class="fas fa-compass"></i> Ver Tours
+        </a>
+        <a href="#" class="btn btn-primary" onclick="openWhatsApp('Hola, quiero reservar un traslado con Panama Transit & Tours. Mi vuelo llega el [FECHA] a las [HORA]. Somos [NÚMERO] personas.')">
+          <i class="fas fa-car"></i> Reservar Traslado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+  SECCIÓN TOURS
+  ============================================================ -->
+  <section class="section-tours" id="tours">
+    <div class="container">
+
+      <div class="section-header">
+        <h2>Nuestros Tours en Panamá</h2>
+        <p>Explora la ciudad, la selva, el Canal y las playas con guías locales apasionados.</p>
+      </div>
+
+      <!-- DISCLAIMER: Entradas no incluidas -->
+      <div class="disclaimer-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Importante:</strong> Los precios base de los <strong>city tours</strong> no incluyen entradas a atracciones (ej. Miraflores: $17.25), propinas, ni comidas (excepto donde se indique "todo incluido"). Las entradas pueden adquirirse por adelantado al reservar o pagarse in situ.
+        </div>
+      </div>
+
+      <!-- ===== CATEGORÍA 1: CITY TOURS ===== -->
+      <div class="tour-category">
+        <h3><i class="fas fa-city"></i> City Tours</h3>
+        <div class="tour-grid">
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/ciudad-canal.jpg" alt="Esclusas de Miraflores o Casco Viejo">
+              <span class="price-chip">Desde $80</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Tour Ciudad de Panamá y Canal</h3>
+              <p>Descubre el Casco Viejo, Cerro Ancón, Calzada de Amador y las Esclusas de Miraflores.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 7.5h · <i class="fas fa-user"></i> Grupo reducido</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Tour Ciudad de Panamá y Canal"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/tour-historico.jpg" alt="Panamá Viejo o calles empedradas del Casco Viejo">
+              <span class="price-chip">Desde $99</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Tour Histórico de Panamá</h3>
+              <p>Recorre Panamá Viejo y el Casco Viejo, con leyendas de conquistadores y calles empedradas.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-user"></i> Grupo reducido</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Tour Histórico de Panamá"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/combo-ciudad-canal-monos.jpg" alt="Monos, Canal y Ciudad (Collage)">
+              <span class="price-chip">Desde $139</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Combo: Ciudad + Canal + Monos</h3>
+              <p>La experiencia definitiva: monos, Casco Viejo y el Canal de Panamá en un solo día.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 9-10h · <i class="fas fa-user"></i> Grupo reducido</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Combo Ciudad, Canal y Monos"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CATEGORÍA 2: NATURALEZA Y ECO ===== -->
+      <div class="tour-category">
+        <h3><i class="fas fa-leaf"></i> Naturaleza y Eco-Aventura</h3>
+        <div class="tour-grid">
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/isla-monos.jpg" alt="Monos en el bosque o bote en el Canal">
+              <span class="price-chip">Desde $99</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Excursión Isla de los Monos</h3>
+              <p>Navega por el Canal y observa monos capuchinos y tamarinos en su hábitat natural.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 4-5h · <i class="fas fa-ship"></i> Paseo en bote</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Excursión Isla de los Monos"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/aldea-embera.jpg" alt="Indígenas en canoa o cascada Emberá">
+              <span class="price-chip">Desde $116</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Aldea Emberá y Cascada</h3>
+              <p>Visita una comunidad indígena, navega en canoa tradicional y explora la selva tropical.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-users"></i> Cultural</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Aldea Emberá y Cascada"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/valle-anton.jpg" alt="Paisaje del valle, cascada o mercado de El Valle">
+              <span class="price-chip">Desde $125</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>El Valle de Antón</h3>
+              <p>Escápate al valle dentro de un volcán: mercado artesanal, cascadas y naturaleza exuberante.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 8-9h · <i class="fas fa-mountain"></i> Aventura</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="El Valle de Antón"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CATEGORÍA 3: PLAYA Y AVENTURA ===== -->
+      <div class="tour-category">
+        <h3><i class="fas fa-umbrella-beach"></i> Playas y Aventura</h3>
+        <div class="tour-grid">
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/aventura-caribe.jpg" alt="Playa caribeña, fuerte de Portobelo o snorkel">
+              <span class="price-chip">Desde $179</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Aventura en el Caribe</h3>
+              <p>Snorkel en aguas caribeñas, explora las Venas Azules y el fuerte de Portobelo.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 10-11h · <i class="fas fa-ship"></i> Snorkel</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Aventura en el Caribe"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/isla-iguana.jpg" alt="Playa blanca, agua turquesa o iguanas en Isla Iguana">
+              <span class="price-chip">Desde $159</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Isla Iguana (playa + snorkel)</h3>
+              <p>Playas de arena blanca y aguas turquesas, snorkel y naturaleza en el Pacífico panameño.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 9-10h · <i class="fas fa-ship"></i> Snorkel</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Isla Iguana"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/catamaran-taboga.jpg" alt="Catamarán o vista de la isla de Taboga">
+              <span class="price-chip">Desde $99</span>
+              <span class="price-chip incluye">¡Todo incluido!</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Catamarán Taboga (todo incluido)</h3>
+              <p>Relájate en un catamarán con almuerzo y barra libre, snorkel y sol en la isla de Taboga.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-utensils"></i> Almuerzo + barra</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Catamarán Taboga"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CATEGORÍA 4: TOURS ESPECIALES ===== -->
+      <div class="tour-category">
+        <h3><i class="fas fa-star"></i> Tours Especiales</h3>
+        <div class="tour-grid">
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/fuerte-san-lorenzo.jpg" alt="Fuerte colonial o esclusas Agua Clara">
+              <span class="price-chip">Desde $125</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Fuerte San Lorenzo + Agua Clara</h3>
+              <p>Explora el fuerte colonial y las impresionantes esclusas de Agua Clara en el Canal.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 8-9h · <i class="fas fa-landmark"></i> Histórico</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Fuerte San Lorenzo y Agua Clara"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/transito-parcial.jpg" alt="Barco Pacific Queen en el Canal de Panamá">
+              <span class="price-chip">Desde $149</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Tránsito parcial por el Canal</h3>
+              <p>A bordo del Pacific Queen, atraviesa las esclusas de Miraflores y Pedro Miguel.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 5-6h · <i class="fas fa-ship"></i> Experiencia única</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Tránsito parcial por el Canal"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/avistamiento-ballenas.jpg" alt="Ballena jorobada o bote en el mar">
+              <span class="price-chip">Desde $108</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Avistamiento de Ballenas</h3>
+              <p>Observa ballenas jorobadas en la bahía de Panamá (temporada: julio-octubre).</p>
+              <div class="meta"><i class="fas fa-clock"></i> 4-5h · <i class="fas fa-water"></i> Ecológico</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Avistamiento de Ballenas"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/escala-privada.jpg" alt="Tour personalizado en la Ciudad de Panamá">
+              <span class="price-chip">Desde $80</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Escala privada en Panamá</h3>
+              <p>Aprovecha tu escala para conocer la ciudad con un guía privado, ideal para conexiones.</p>
+              <div class="meta"><i class="fas fa-clock"></i> 4-6h · <i class="fas fa-user"></i> Privado</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Escala privada en Panamá"> <i class="fab fa-whatsapp"></i> Reservar </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CATEGORÍA 5: TOURS ADICIONALES (BAJO DEMANDA) ===== -->
+      <div class="tour-category">
+        <h3><i class="fas fa-ellipsis-h"></i> Tours Adicionales (bajo demanda)</h3>
+        <div class="tour-grid">
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/bird-watching.jpg" alt="Aves tropicales o Pipeline Road">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Bird Watching Tour</h3>
+              <p>Explora la Pipeline Road con un guía experto en aves tropicales.</p>
+              <div class="meta"><i class="fas fa-binoculars"></i> Avistamiento de aves</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Bird Watching Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/pesca-gatun.jpg" alt="Pesca deportiva en el Lago Gatún">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Pesca en Lago Gatún</h3>
+              <p>Pesca deportiva en el lago del Canal, con guía y equipo incluido.</p>
+              <div class="meta"><i class="fas fa-fish"></i> Pesca deportiva</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Pesca en Lago Gatún"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/pesca-altamar.jpg" alt="Barco de pesca en mar abierto Pacífico">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Pesca en Alta Mar</h3>
+              <p>Aventura de pesca en el Pacífico panameño, con todo el equipo necesario.</p>
+              <div class="meta"><i class="fas fa-ship"></i> Pesca en altamar</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Pesca en Alta Mar"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/bike-tour.jpg" alt="Bicicletas en la ciudad o Ciclovía de la Calzada de Amador">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Bike Tour Ciudad</h3>
+              <p>Recorre la Ciudad de Panamá en bicicleta, ideal para los amantes del deporte.</p>
+              <div class="meta"><i class="fas fa-bicycle"></i> Tour en bici</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Bike Tour Ciudad"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/bar-crawl.jpg" alt="Bares o vida nocturna en Casco Viejo">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Bar Crawl Casco Viejo</h3>
+              <p>Vive la noche en el Casco Viejo, con paradas en los mejores bares y rooftops.</p>
+              <div class="meta"><i class="fas fa-wine-glass-alt"></i> Tour nocturno</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Bar Crawl Casco Viejo"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/helicopter-tour.jpg" alt="Helicóptero volando sobre la ciudad o el Canal">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Helicopter Tour</h3>
+              <p>Sobrevuela la ciudad y el Canal de Panamá en helicóptero, vistas inolvidables.</p>
+              <div class="meta"><i class="fas fa-helicopter"></i> Vistas aéreas</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Helicopter Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/food-tour.jpg" alt="Platos típicos panameños comida local">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Panama Food Tour</h3>
+              <p>Descubre la gastronomía panameña: desde carimañolas hasta mariscos frescos.</p>
+              <div class="meta"><i class="fas fa-utensils"></i> Tour culinario</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Panama Food Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tour-card-image">
+              <img src="images/darien-exploration.jpg" alt="Selva o comunidad indígena de Darién">
+              <span class="price-chip">Bajo consulta</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>Darien Exploration</h3>
+              <p>Aventura en la selva del Darién, para viajeros intrépidos que buscan lo remoto.</p>
+              <div class="meta"><i class="fas fa-tree"></i> Expedición</div>
+              <div class="tour-card-actions">
+                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
+                <button class="btn-sm btn-sm-whatsapp" data-tour="Darien Exploration"> <i class="fab fa-whatsapp"></i> Consultar </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+  SECCIÓN TRASLADOS
+  ============================================================ -->
+  <section class="section-transfers" id="transfers">
+    <div class="container">
+      <div class="transfer-card">
+        <div class="transfer-info">
+          <h3><i class="fas fa-shuttle-van"></i> Traslado Aeropuerto</h3>
+          <p>Llegada o salida desde el Aeropuerto Internacional de Tocumen. Servicio privado, puntual y con un vehículo ejecutivo y cómodo.</p>
+        </div>
+        <div class="transfer-price">
+          <!-- Colocada aquí la imagen del vehículo de transporte ejecutivo según tu lista -->
+          <div style="max-width: 150px; margin-bottom: 10px; border-radius: var(--radius-md); overflow: hidden;">
+            <img src="images/transporte-ejecutivo.jpg" alt="Vehículo de transporte ejecutivo">
+          </div>
+          <span class="price-tag">$25</span>
+          <span class="price-sub">por vehículo (hasta 4 pax)</span>
+        </div>
+        <a href="#" class="btn-lg" onclick="openWhatsApp('Hola, quiero reservar un traslado con Panama Transit & Tours. Mi vuelo llega el [FECHA] a las [HORA]. Somos [NÚMERO] personas.')">
+          <i class="fab fa-whatsapp"></i> Reservar mi Traslado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+  FEATURES
+  ============================================================ -->
+  <section class="section-features" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>¿Por qué viajar con nosotros?</h2>
+        <p>Confiabilidad, calidez local y una experiencia sin contratiempos.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="icon-circle"><i class="fas fa-user-shield"></i></div>
+          <h4>Conductores Profesionales</h4>
+          <p>Seguros, puntuales y con amplio conocimiento de la ciudad.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon-circle"><i class="fas fa-map-signs"></i></div>
+          <h4>Guías Locales Expertos</h4>
+          <p>Te mostramos los secretos mejor guardados de Panamá.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon-circle"><i class="fas fa-clock"></i></div>
+          <h4>Puntualidad Garantizada</h4>
+          <p>Tu tiempo es valioso. Siempre llegamos a tiempo.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
+          <h4>Atención Personalizada</h4>
+          <p>Itinerarios a tu medida y soporte en todo momento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+  FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <i class="fas fa-route"></i>
+          Panama <span>Transit</span> & Tours
+        </a>
+        <p>Tu aliado de confianza para moverte y descubrir Panamá con autenticidad y seguridad.</p>
+        <a href="#" class="footer-whatsapp-btn" onclick="openWhatsApp('Hola, vengo del footer de Panama Transit & Tours. Necesito información.')">
+          <i class="fab fa-whatsapp fa-lg"></i> Escríbenos por WhatsApp
+        </a>
+      </div>
+      <div>
+        <h5>Explora</h5>
+        <ul>
+          <li><a href="#tours">Tours</a></li>
+          <li><a href="#transfers">Traslados</a></li>
+          <li><a href="#">Paquetes Multidía</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Compañía</h5>
+        <ul>
+          <li><a href="#about">Quiénes somos</a></li>
+          <li><a href="#" onclick="openWhatsApp('Hola, tengo una consulta sobre sus servicios.')">Contacto</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contáctanos</h5>
+        <ul>
+          <li><i class="fas fa-phone" style="color: var(--accent);"></i> <a href="tel:+50768468733">+507 6846-8733</a></li>
+          <li><i class="fab fa-whatsapp" style="color: #25D366;"></i> <a href="#" onclick="openWhatsApp('Hola, tengo una consulta.')">WhatsApp</a></li>
+          <li><i class="fas fa-map-pin" style="color: var(--accent);"></i> Ciudad de Panamá</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Panama Transit & Tours. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- ============================================================
+  WHATSAPP FAB
+  ============================================================ -->
+  <a href="#" class="whatsapp-fab" id="whatsappFab" onclick="openWhatsApp('Hola, vengo de Panama Transit & Tours. Necesito ayuda con mi viaje.')">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">¿Necesitas ayuda?</span>
+  </a>
+
+  <!-- ============================================================
+  JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // 1. Configuración de WhatsApp
+    const PHONE = '50768468733';
+
+    function openWhatsApp(message) {
+      const encoded = encodeURIComponent(message);
+      const url = `https://wa.me/${PHONE}?text=${encoded}`;
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // 2. Menú hamburguesa
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+
+    hamburger.addEventListener('click', function() {
+      navList.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('open');
+      });
+    });
+
+    // 3. Header shadow al scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // 4. Botones de tour: mensaje dinámico
+    document.addEventListener('DOMContentLoaded', function() {
+      const tourButtons = document.querySelectorAll('.btn-sm-whatsapp');
+      tourButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const tourName = this.getAttribute('data-tour');
+          const message = `Hola, me interesa el tour: "${tourName}" de Panama Transit & Tours. ¿Tienen disponibilidad y precio final?`;
+          openWhatsApp(message);
+        });
+      });
+    });
+
+    // 5. Cerrar menú al redimensionar
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        navList.classList.remove('open');
+      }
+    });
+
+    // 6. Prevenir enlaces vacíos
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (this.getAttribute('onclick')) return;
+        e.preventDefault();
+      });
+    });
+  </script>
+
+</body>
+</html>
