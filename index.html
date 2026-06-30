@@ -1011,21 +1011,18 @@
         </div>
       </div>
 
-      <!-- Aquí se generan los tours con JavaScript -->
       <div id="toursContainer"></div>
 
     </div>
   </section>
 
   <!-- ============================================================
-  MODAL (detalle del tour)
+  MODAL
   ============================================================ -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modalContent">
       <button class="modal-close" id="modalClose">&times;</button>
-      <div id="modalBody">
-        <!-- Generado por JavaScript -->
-      </div>
+      <div id="modalBody"></div>
     </div>
   </div>
 
@@ -1147,6 +1144,9 @@
     // ============================================================
     const PHONE = '50768468733';
 
+    // 🔥 URL DE TU GOOGLE APPS SCRIPT (YA INTEGRADA)
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz-nSEauzus8_bwNY59xC5edPBWuNNxb-8VH6Yc3yRfpK6XkGmh4yv3njODZW-Wc7WJ/exec';
+
     function openWhatsApp(message) {
       const encoded = encodeURIComponent(message);
       const url = `https://wa.me/${PHONE}?text=${encoded}`;
@@ -1155,19 +1155,30 @@
     }
 
     // ============================================================
-    // 2. DATOS DE LOS TOURS (ACTUALIZADOS CON NUEVA INFORMACIÓN)
+    // 2. DATOS DE LOS TOURS (BASE - SE ACTUALIZAN CON LA API)
     // ============================================================
-    const toursData = {
-      // ----- CITY TOURS (con tabla de precios) -----
+    let toursData = {
       'Tour Ciudad de Panamá y Canal': {
         id: 'tour-ciudad-canal',
         categoria: 'City Tours',
         imagen: 'https://i.imgur.com/ZLpwqoe.jpeg',
         precio: 'Desde $80',
         duracion: '7.5 horas',
-        descripcion: 'Sumérgete en la vibrante capital panameña con este tour completo que combina historia, modernidad y la maravilla del Canal. Recorrerás el Casco Antiguo (Casco Viejo), declarado Patrimonio de la Humanidad por la UNESCO, donde sus calles empedradas y balcones coloniales te transportarán a la época de los conquistadores. Luego, ascenderás al Cerro Ancón para obtener una vista panorámica de la ciudad y el perfil de los rascacielos. Finalizarás en las Esclusas de Miraflores, donde presenciarás el paso de enormes buques a través del Canal de Panamá, una obra de ingeniería sin igual.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en los mejores miradores', 'Traslado ida y vuelta desde su alojamiento', 'Visita a centro de artesanías (opcional)'],
-        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a las Esclusas de Miraflores ($17.25 por adulto)', 'Entrada al IMAX 3D'],
+        descripcion: 'Sumérgete en la vibrante capital panameña con este tour completo que combina historia, modernidad y la maravilla del Canal.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores miradores',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entradas a las Esclusas de Miraflores ($17.25 por adulto)',
+          'Entrada al IMAX 3D'
+        ],
         tips: ['Llevar ropa cómoda y zapatos para caminar', 'Bloqueador solar y sombrero', 'Cámara para fotos', 'Efectivo para entradas y propinas'],
         isCityTour: true,
         pricing: [
@@ -1186,9 +1197,21 @@
         imagen: 'https://i.imgur.com/4P08Qka.jpeg',
         precio: 'Desde $99',
         duracion: '7-8 horas',
-        descripcion: 'Viaja al pasado con este recorrido que explora los orígenes de la ciudad de Panamá. Comenzarás en Panamá Viejo, el asentamiento original fundado en 1519, donde aún se alzan las ruinas de la catedral y otros edificios que dan testimonio de la primera ciudad europea en el Pacífico. Luego, te adentrarás en el Casco Viejo, un barrio colonial lleno de iglesias, plazas y callejones que cuentan historias de piratas, conquistadores y leyendas. Un guía experto te relatará los episodios más fascinantes de la historia panameña.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en los puntos históricos', 'Traslado ida y vuelta desde su alojamiento', 'Visita a centro de artesanías (opcional)'],
-        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a Panamá Viejo', 'Entrada a Mi Pueblito'],
+        descripcion: 'Viaja al pasado con este recorrido que explora los orígenes de la ciudad de Panamá, desde Panamá Viejo hasta el Casco Viejo.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los puntos históricos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entradas a Panamá Viejo',
+          'Entrada a Mi Pueblito'
+        ],
         tips: ['Calzado cómodo para caminar', 'Bloqueador solar y gorra', 'Llevar efectivo para entradas', 'Cámara para fotografías'],
         isCityTour: true,
         pricing: [
@@ -1207,9 +1230,22 @@
         imagen: 'https://i.imgur.com/0Mc2pa8.png',
         precio: 'Desde $139',
         duracion: '9-10 horas',
-        descripcion: 'El tour más completo para quienes desean vivir lo mejor de Panamá en un solo día. Comienza con una navegación por el Canal de Panamá hacia la Isla de los Monos, donde podrás observar monos capuchinos y tamarinos en su entorno natural. Luego, te trasladarás al Casco Viejo para un recorrido a pie por sus calles llenas de historia. Finalizarás en las Esclusas de Miraflores para ver el funcionamiento del Canal. Una experiencia única que combina naturaleza, cultura e ingeniería.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en los mejores puntos', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en bote por el Canal', 'Visita a centro de artesanías (opcional)'],
-        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entrada a las Esclusas de Miraflores ($17.25)', 'Entrada al IMAX 3D'],
+        descripcion: 'El tour más completo que combina naturaleza, cultura e ingeniería: monos, Casco Viejo y el Canal de Panamá en un solo día.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores puntos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote por el Canal',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entrada a las Esclusas de Miraflores ($17.25)',
+          'Entrada al IMAX 3D'
+        ],
         tips: ['Ropa cómoda y zapatos para caminar', 'Bloqueador solar y repelente', 'Cámara con zoom para monos', 'Efectivo para entradas'],
         isCityTour: true,
         pricing: [
@@ -1222,16 +1258,22 @@
           { personas: '26+ personas', precio: '$52.00 c/u' }
         ]
       },
-
-      // ----- NATURALEZA Y ECO (con descripciones variadas) -----
       'Excursión Isla de los Monos': {
         id: 'isla-monos',
         categoria: 'Naturaleza y Eco-Aventura',
         imagen: 'https://i.imgur.com/qlD04m1.jpeg',
         precio: 'Desde $99',
         duracion: '4-5 horas',
-        descripcion: 'Embárcate en una aventura ecológica navegando por las aguas del Canal de Panamá. La Isla de los Monos es un santuario donde los monos capuchinos y tamarinos viven en libertad. Con la ayuda de un guía naturalista, aprenderás sobre su comportamiento y podrás fotografiarlos en su hábitat. El trayecto en bote te regalará vistas únicas de la selva tropical que bordea el Canal.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en el trayecto', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en bote por el Canal', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Embárcate en una aventura ecológica navegando por el Canal de Panamá para observar monos capuchinos y tamarinos en su hábitat natural.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el trayecto',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote por el Canal',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a atracciones adicionales'],
         tips: ['Llevar repelente de insectos', 'Bloqueador solar', 'Cámara con zoom', 'Ropa ligera y cómoda'],
         isCityTour: false
@@ -1242,8 +1284,16 @@
         imagen: 'https://i.imgur.com/F3xl8oc.jpeg',
         precio: 'Desde $116',
         duracion: '7-8 horas',
-        descripcion: 'Conoce la cultura indígena Emberá en una visita auténtica a su aldea. Navegarás en canoa tradicional por el río, serás recibido con bailes típicos y aprenderás sobre sus costumbres y artesanías. Luego, caminarás por la selva hasta una cascada escondida donde podrás refrescarte. Una experiencia de inmersión cultural y natural que te conectará con las raíces más profundas de Panamá.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en el camino', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en canoa tradicional', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Una inmersión cultural en la comunidad indígena Emberá con navegación en canoa, bailes típicos, artesanías y una cascada escondida en la selva.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el camino',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en canoa tradicional',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y la comunidad', 'Compras de artesanías'],
         tips: ['Ropa ligera y calzado para caminar', 'Repelente de insectos', 'Efectivo para artesanías', 'Traje de baño para la cascada'],
         isCityTour: false
@@ -1254,22 +1304,36 @@
         imagen: 'https://i.imgur.com/Gs4yy6D.jpeg',
         precio: 'Desde $125',
         duracion: '8-9 horas',
-        descripcion: 'Escápate a El Valle, un pintoresco pueblo enclavado en el cráter de un volcán extinto. Aquí encontrarás un mercado artesanal donde los lugareños venden sus creaciones, así como cascadas, senderos y una rica biodiversidad. Puedes visitar el zoológico local, el serpentario y el famoso árbol "La Silla del Diablo". Un destino perfecto para desconectar y disfrutar de la naturaleza.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en los miradores', 'Traslado ida y vuelta desde su alojamiento', 'Visita al mercado artesanal', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Escapada a El Valle, un pueblo enclavado en el cráter de un volcán extinto. Mercado artesanal, cascadas, senderos y biodiversidad.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los miradores',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita al mercado artesanal',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a atracciones locales (zoológico, serpentario, etc.)'],
         tips: ['Ropa cómoda y zapatos de senderismo', 'Bloqueador solar y repelente', 'Cámara para fotos', 'Efectivo para compras'],
         isCityTour: false
       },
-
-      // ----- PLAYAS Y AVENTURA (descripciones atractivas) -----
       'Aventura en el Caribe': {
         id: 'caribe',
         categoria: 'Playas y Aventura',
         imagen: 'https://i.imgur.com/EoNNlwI.jpeg',
         precio: 'Desde $179',
         duracion: '10-11 horas',
-        descripcion: 'Descubre la costa caribeña de Panamá en un día lleno de sol, playa e historia. Navegarás hacia las aguas cristalinas de Portobelo, donde podrás practicar snorkel entre arrecifes de coral y peces tropicales. También explorarás las ruinas de los fuertes coloniales que protegían la ciudad de los piratas. Un recorrido que combina aventura marina y patrimonio cultural.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en la costa', 'Traslado ida y vuelta desde su alojamiento', 'Equipo de snorkel', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Descubre la costa caribeña de Panamá con snorkel en aguas cristalinas, exploración de fuertes coloniales y playas paradisíacas.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Equipo de snorkel',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a los fuertes de Portobelo'],
         tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Repelente de insectos', 'Efectivo para entradas'],
         isCityTour: false
@@ -1280,8 +1344,16 @@
         imagen: 'https://i.imgur.com/EoNNlwI.jpeg',
         precio: 'Desde $159',
         duracion: '9-10 horas',
-        descripcion: 'Isla Iguana es un paraíso virgen en el Golfo de Panamá. Sus playas de arena blanca y aguas turquesas son el escenario perfecto para un día de relax y snorkel. Podrás observar iguanas, aves marinas y una gran variedad de peces coloridos. Un destino ideal para los amantes de la naturaleza y el mar.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en la costa', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en bote a la isla', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Isla Iguana es un paraíso virgen en el Golfo de Panamá. Playas de arena blanca, aguas turquesas y snorkel con peces coloridos.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote a la isla',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Equipo de snorkel adicional'],
         tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Snorkel (opcional)', 'Efectivo para propinas'],
         isCityTour: false
@@ -1292,22 +1364,36 @@
         imagen: 'https://i.imgur.com/9hAzdA2.jpeg',
         precio: 'Desde $99',
         duracion: '7-8 horas',
-        descripcion: 'Embárcate en un catamarán con todo incluido hacia la isla de Taboga, conocida como la "Isla de las Flores". Disfruta de un día de sol, snorkel, nado en aguas cristalinas y un delicioso almuerzo a bordo con barra libre. La travesía te regalará vistas espectaculares de la bahía de Panamá y el skyline de la ciudad.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en el mar', 'Traslado ida y vuelta desde su alojamiento', 'Catamarán con almuerzo y barra libre', 'Snorkel básico', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Catamarán con todo incluido hacia la "Isla de las Flores". Snorkel, almuerzo, barra libre y vistas espectaculares de la bahía de Panamá.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el mar',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Catamarán con almuerzo y barra libre',
+          'Snorkel básico',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Propinas para la tripulación', 'Compras adicionales a bordo'],
         tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Ropa ligera', 'Efectivo para propinas'],
         isCityTour: false
       },
-
-      // ----- TOURS ESPECIALES (con contenido único) -----
       'Fuerte San Lorenzo y Agua Clara': {
         id: 'san-lorenzo',
         categoria: 'Tours Especiales',
         imagen: 'https://i.imgur.com/PYsOwOk.jpeg',
         precio: 'Desde $125',
         duracion: '8-9 horas',
-        descripcion: 'Explora dos maravillas del Canal de Panamá en un solo día. Comienza en las Esclusas de Agua Clara, donde los buques son elevados para cruzar del Atlántico al Pacífico. Luego, cruza el Puente Atlántico y visita el Fuerte de San Lorenzo, una fortaleza colonial que protegía la entrada al río Chagres. Un tour que combina ingeniería moderna e historia colonial.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en el trayecto', 'Traslado ida y vuelta desde su alojamiento', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Explora dos maravillas en un día: las Esclusas de Agua Clara, el Puente Atlántico y el histórico Fuerte de San Lorenzo.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el trayecto',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a las atracciones (Esclusas y Fuerte)'],
         tips: ['Ropa cómoda y calzado para caminar', 'Bloqueador solar y gorra', 'Cámara para fotos', 'Efectivo para entradas'],
         isCityTour: false
@@ -1318,8 +1404,16 @@
         imagen: 'https://i.imgur.com/fz20d3z.jpeg',
         precio: 'Desde $149',
         duracion: '5-6 horas',
-        descripcion: 'Vive la experiencia de navegar a bordo del Pacific Queen, un barco que atraviesa las esclusas de Miraflores y Pedro Miguel. Sentirás la emoción de ser elevado 26 metros sobre el nivel del mar mientras cruzas el Corte Gaillard. Una oportunidad única para comprender la magnitud del Canal de Panamá desde su misma superficie.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en el Canal', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en el Pacific Queen', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Vive la experiencia de navegar a bordo del Pacific Queen, atravesando las esclusas de Miraflores y Pedro Miguel.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el Canal',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en el Pacific Queen',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para la tripulación'],
         tips: ['Ropa cómoda', 'Bloqueador solar', 'Cámara para fotos', 'Efectivo para propinas'],
         isCityTour: false
@@ -1330,8 +1424,16 @@
         imagen: 'https://i.imgur.com/JXT5Yp7.jpeg',
         precio: 'Desde $108',
         duracion: '4-5 horas',
-        descripcion: 'Entre julio y octubre, las ballenas jorobadas llegan a las costas de Panamá para reproducirse. Esta excursión te llevará a la bahía de Panamá, donde podrás observar estos majestuosos cetáceos en su entorno natural. Guías expertos te contarán todo sobre su comportamiento y hábitos. Una experiencia ecológica inolvidable.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel (dentro de la ciudad)', 'Agua embotellada', 'Paradas fotográficas en la costa', 'Traslado ida y vuelta desde su alojamiento', 'Paseo en bote para avistamiento', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Entre julio y octubre, observa ballenas jorobadas en su entorno natural en la bahía de Panamá. Guías expertos te contarán todo sobre su comportamiento.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote para avistamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y tripulación'],
         tips: ['Ropa ligera', 'Bloqueador solar', 'Cámara con zoom', 'Repelente de insectos'],
         isCityTour: false
@@ -1342,22 +1444,34 @@
         imagen: 'https://i.imgur.com/t1sOAzi.jpeg',
         precio: 'Desde $80',
         duracion: '4-6 horas',
-        descripcion: 'Aprovecha al máximo tu escala en el Aeropuerto de Tocumen con un tour privado que se adapta a tu tiempo disponible. Visita los puntos más emblemáticos de la ciudad: el Canal, el Casco Viejo o el centro financiero. Un guía privado te llevará a los lugares que más te interesen, asegurando que tu escala sea memorable.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en el aeropuerto', 'Agua embotellada', 'Paradas fotográficas personalizadas', 'Traslado ida y vuelta desde el aeropuerto', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Aprovecha al máximo tu escala en el Aeropuerto de Tocumen con un tour privado personalizado a tu tiempo y gustos.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en el aeropuerto',
+          'Agua embotellada',
+          'Paradas fotográficas personalizadas',
+          'Traslado ida y vuelta desde el aeropuerto',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Entradas a atracciones'],
         tips: ['Ropa cómoda', 'Pasaporte para identificación', 'Cámara para fotos', 'Efectivo para propinas'],
         isCityTour: false
       },
-
-      // ----- TOURS ADICIONALES (bajo demanda) -----
       'Bird Watching Tour': {
         id: 'birdwatching',
         categoria: 'Tours Adicionales',
         imagen: 'https://i.imgur.com/OUi2x77.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Flexible',
-        descripcion: 'Panamá es un paraíso para los observadores de aves, con más de 1000 especies registradas. Este tour te lleva a la Pipeline Road, una de las zonas con mayor biodiversidad del país. Un guía ornitólogo te ayudará a identificar tucanes, trogones, pavones y muchas otras aves tropicales.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel', 'Agua embotellada', 'Paradas fotográficas en los mejores avistamientos', 'Traslado ida y vuelta desde su alojamiento', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Panamá es un paraíso para los observadores de aves con más de 1000 especies. Recorre la Pipeline Road con un guía ornitólogo experto.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores avistamientos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Equipo adicional (binoculares)'],
         tips: ['Ropa de colores neutros', 'Zapatos cómodos', 'Binoculares (si tienes)', 'Repelente de insectos'],
         isCityTour: false
@@ -1368,8 +1482,16 @@
         imagen: 'https://i.imgur.com/lWpiGR4.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Flexible',
-        descripcion: 'El lago Gatún, formado por la construcción del Canal, es un excelente destino para la pesca deportiva. Aquí podrás pescar especies como el pez aguja, el pez vela y la tilapia. Con guía y equipo incluido, disfrutarás de una jornada de pesca en un entorno selvático único.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel', 'Agua embotellada', 'Paradas fotográficas en el lago', 'Traslado ida y vuelta desde su alojamiento', 'Barco de pesca y equipo', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Pesca deportiva en el lago Gatún, parte del sistema del Canal. Pez aguja, pez vela y tilapia en un entorno selvático único.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en el lago',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Barco de pesca y equipo',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Licencias de pesca (si aplica)'],
         tips: ['Ropa ligera', 'Bloqueador solar', 'Gorra', 'Efectivo para propinas'],
         isCityTour: false
@@ -1380,8 +1502,16 @@
         imagen: 'https://i.imgur.com/k47UdSQ.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Flexible',
-        descripcion: 'Para los amantes de la pesca deportiva, esta experiencia en el Pacífico panameño es incomparable. Sal a mar abierto en busca de atún, dorado, pez vela y marlin. Con un capitán experimentado y equipo de primera calidad, vivirás la emoción de la pesca en alta mar.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel', 'Agua embotellada', 'Paradas fotográficas en la costa', 'Traslado ida y vuelta desde su alojamiento', 'Barco de pesca y equipo completo', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Sal a mar abierto en busca de atún, dorado, pez vela y marlin en el Pacífico panameño. Capitán experimentado y equipo de primera calidad.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Barco de pesca y equipo completo',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para la tripulación', 'Licencias de pesca'],
         tips: ['Ropa ligera', 'Bloqueador solar', 'Gorra', 'Efectivo para propinas'],
         isCityTour: false
@@ -1392,8 +1522,16 @@
         imagen: 'https://i.imgur.com/M4Xat9K.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Flexible',
-        descripcion: 'Descubre la Ciudad de Panamá sobre dos ruedas. Este tour en bicicleta te lleva por la Calzada de Amador, el Casco Viejo y la Cinta Costera, disfrutando de vistas al mar y al skyline. Es la forma más activa y ecológica de explorar la capital.',
-        incluye: ['Transporte privado ida y vuelta', 'Recogida en su hotel', 'Agua embotellada', 'Paradas fotográficas en los puntos clave', 'Traslado ida y vuelta desde su alojamiento', 'Bicicleta y casco', 'Visita a centro de artesanías (opcional)'],
+        descripcion: 'Descubre la Ciudad de Panamá sobre dos ruedas: Calzada de Amador, Casco Viejo y Cinta Costera. La forma más activa de explorar la capital.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en los puntos clave',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Bicicleta y casco',
+          'Visita a centro de artesanías (opcional)'
+        ],
         noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Seguro personal'],
         tips: ['Ropa deportiva cómoda', 'Bloqueador solar', 'Agua adicional', 'Efectivo para propinas'],
         isCityTour: false
@@ -1404,7 +1542,7 @@
         imagen: 'https://i.imgur.com/IkeoDXB.png',
         precio: 'Bajo consulta',
         duracion: '3-4 horas',
-        descripcion: 'Vive la vibrante vida nocturna del Casco Viejo. Con un guía local, recorrerás los bares y rooftops más populares del barrio histórico. Disfrutarás de cócteles, música y la atmósfera única que combina historia y modernidad.',
+        descripcion: 'Vive la vibrante vida nocturna del Casco Viejo con un guía local. Recorre los mejores bares y rooftops del barrio histórico.',
         incluye: ['Guía bilingüe', 'Recorrido por 3-4 bares', 'Cóctel de bienvenida', 'Recomendaciones exclusivas'],
         noIncluye: ['Bebidas adicionales', 'Propinas para el guía', 'Transporte de regreso'],
         tips: ['Ropa elegante casual', 'Identificación oficial', 'Efectivo para gastos adicionales'],
@@ -1416,7 +1554,7 @@
         imagen: 'https://i.imgur.com/9bLe4EW.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Variable',
-        descripcion: 'Sobrevuela la Ciudad de Panamá y el Canal en un emocionante paseo en helicóptero. Disfruta de vistas aéreas del skyline, el Puente de las Américas, las esclusas y la exuberante selva que rodea la región. Una experiencia única para capturar fotos impresionantes.',
+        descripcion: 'Sobrevuela la Ciudad de Panamá y el Canal en helicóptero. Vistas aéreas del skyline, el Puente de las Américas y las esclusas.',
         incluye: ['Helicóptero privado', 'Piloto experimentado', 'Recorrido personalizado', 'Seguro de vuelo'],
         noIncluye: ['Propinas para el piloto', 'Transporte al helipuerto'],
         tips: ['Llegar 30 minutos antes', 'Cámara para fotos aéreas', 'Ropa cómoda'],
@@ -1428,7 +1566,7 @@
         imagen: 'https://i.imgur.com/LEgsnYi.jpeg',
         precio: 'Bajo consulta',
         duracion: '3-4 horas',
-        descripcion: 'Explora la gastronomía panameña a través de un recorrido culinario. Probarás platos típicos como carimañolas, empanadas, ceviche y mariscos frescos en los mejores lugares escondidos de la ciudad. Un festín para los sentidos.',
+        descripcion: 'Explora la gastronomía panameña: carimañolas, empanadas, ceviche y mariscos frescos en los mejores lugares escondidos de la ciudad.',
         incluye: ['Guía gastronómico', 'Muestras de comida en 5-6 paradas', 'Bebida típica', 'Recomendaciones exclusivas'],
         noIncluye: ['Propinas para el guía', 'Compras adicionales'],
         tips: ['Ven con hambre', 'Ropa cómoda', 'Cámara para fotos de comida'],
@@ -1440,7 +1578,7 @@
         imagen: 'https://i.imgur.com/Ba4qHyu.jpeg',
         precio: 'Bajo consulta',
         duracion: 'Multi-día',
-        descripcion: 'Aventura en la selva del Darién, una de las regiones más salvajes y remotas de Panamá. Esta expedición te llevará a conocer comunidades indígenas, recorrer senderos selváticos y descubrir una biodiversidad asombrosa. Para viajeros intrépidos que buscan experiencias auténticas.',
+        descripcion: 'Aventura en la selva del Darién. Comunidades indígenas, senderos selváticos y biodiversidad asombrosa para viajeros intrépidos.',
         incluye: ['Transporte especializado', 'Guía experto en selva', 'Equipo de campamento', 'Comidas incluidas', 'Seguro de viaje'],
         noIncluye: ['Propinas para el guía', 'Equipo personal adicional', 'Seguro médico adicional'],
         tips: ['Preparación física', 'Ropa de selva', 'Repelente de insectos fuerte', 'Botiquín personal'],
@@ -1483,7 +1621,15 @@
     }
 
     function buildCategory(categoryName, tours) {
-      let html = `<div class="tour-category"><h3><i class="fas fa-${categoryName === 'City Tours' ? 'city' : categoryName === 'Naturaleza y Eco-Aventura' ? 'leaf' : categoryName === 'Playas y Aventura' ? 'umbrella-beach' : categoryName === 'Tours Especiales' ? 'star' : 'ellipsis-h'}"></i> ${categoryName}</h3><div class="tour-grid">`;
+      const iconMap = {
+        'City Tours': 'city',
+        'Naturaleza y Eco-Aventura': 'leaf',
+        'Playas y Aventura': 'umbrella-beach',
+        'Tours Especiales': 'star',
+        'Tours Adicionales': 'ellipsis-h'
+      };
+      const icon = iconMap[categoryName] || 'tag';
+      let html = `<div class="tour-category"><h3><i class="fas fa-${icon}"></i> ${categoryName}</h3><div class="tour-grid">`;
       tours.forEach(([key, tour]) => {
         html += buildTourCard(key, tour);
       });
@@ -1526,7 +1672,7 @@
     }
 
     // ============================================================
-    // 4. MODAL (con tabla de precios para City Tours)
+    // 4. MODAL
     // ============================================================
     function openModal(tourKey) {
       const tour = toursData[tourKey];
@@ -1543,7 +1689,6 @@
         <p style="font-size: 1rem; color: var(--on-surface-variant);">${tour.descripcion}</p>
       `;
 
-      // Mostrar tabla de precios si es City Tour
       if (tour.isCityTour && tour.pricing) {
         html += `
           <div class="modal-section" style="border-top: none; margin-top: 8px;">
@@ -1613,7 +1758,59 @@
     document.getElementById('modalClose').addEventListener('click', closeModal);
 
     // ============================================================
-    // 5. MENÚ HAMBURGUESA Y OTROS
+    // 5. CARGAR DATOS DESDE GOOGLE APPS SCRIPT
+    // ============================================================
+    async function loadPricesFromAPI() {
+      try {
+        console.log('🔄 Cargando datos desde Google Apps Script...');
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Error al obtener los datos');
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.error || 'Error desconocido');
+        }
+
+        const data = result.data;
+        console.log('✅ Datos cargados:', data.length, 'tours');
+
+        data.forEach(item => {
+          const tourId = item.id;
+          let tourKey = null;
+          for (let key in toursData) {
+            if (toursData[key].id === tourId) {
+              tourKey = key;
+              break;
+            }
+          }
+
+          if (tourKey) {
+            const tour = toursData[tourKey];
+            if (item.precio) tour.precio = item.precio;
+            if (item.descripcion) tour.descripcion = item.descripcion;
+
+            if (tour.isCityTour && tour.pricing) {
+              const pricing = tour.pricing;
+              if (item.precio_1) pricing[0].precio = `$${parseFloat(item.precio_1).toFixed(2)}`;
+              if (item.precio_2) pricing[1].precio = `$${parseFloat(item.precio_2).toFixed(2)} c/u`;
+              if (item.precio_3_4) pricing[2].precio = `$${parseFloat(item.precio_3_4).toFixed(2)} c/u`;
+              if (item.precio_5_6) pricing[3].precio = `$${parseFloat(item.precio_5_6).toFixed(2)} c/u`;
+              if (item.precio_7_10) pricing[4].precio = `$${parseFloat(item.precio_7_10).toFixed(2)} c/u`;
+              if (item.precio_11_25) pricing[5].precio = `$${parseFloat(item.precio_11_25).toFixed(2)} c/u`;
+              if (item.precio_26_mas) pricing[6].precio = `$${parseFloat(item.precio_26_mas).toFixed(2)} c/u`;
+            }
+          }
+        });
+
+        renderTours();
+      } catch (error) {
+        console.warn('⚠️ No se pudo cargar la API, usando datos por defecto:', error);
+        renderTours();
+      }
+    }
+
+    // ============================================================
+    // 6. MENÚ HAMBURGUESA Y OTROS
     // ============================================================
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('navList');
@@ -1660,11 +1857,11 @@
     });
 
     // ============================================================
-    // 6. INICIALIZAR
+    // 7. INICIALIZAR
     // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
-      renderTours();
-      console.log('🚐 Panama Transit & Tours - Cargado con éxito');
+      loadPricesFromAPI();
+      console.log('🚐 Panama Transit & Tours - Iniciando...');
     });
   </script>
 
