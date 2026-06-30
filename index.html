@@ -4,36 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panama Transit & Tours - Traslados y Tours en Panamá</title>
+  <meta name="description" content="Tours personalizados y traslados seguros en Panamá. Reserva con guías locales expertos.">
 
-  <!-- Google Fonts -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://i.imgur.com" crossorigin>
 
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
 
   <style>
     /* ============================================================
-               1. VARIABLES CSS
-               ============================================================ */
+    VARIABLES Y ESTILOS BASE
+    ============================================================ */
     :root {
       --primary: #001e40;
       --on-primary: #ffffff;
       --primary-container: #003366;
-      --on-primary-container: #799dd6;
       --secondary: #006d3d;
       --on-secondary: #ffffff;
       --accent: #ea8000;
       --accent-hover: #d97000;
       --surface: #f7f9fb;
-      --surface-dim: #d8dadc;
       --surface-container-lowest: #ffffff;
       --on-surface: #191c1e;
       --on-surface-variant: #43474f;
-      --shadow-sm: 0px 2px 8px rgba(0, 51, 102, 0.06);
-      --shadow-md: 0px 4px 20px rgba(0, 51, 102, 0.08);
-      --shadow-lg: 0px 8px 40px rgba(0, 51, 102, 0.12);
+      --shadow-sm: 0 2px 8px rgba(0, 51, 102, 0.06);
+      --shadow-md: 0 4px 20px rgba(0, 51, 102, 0.08);
+      --shadow-lg: 0 8px 40px rgba(0, 51, 102, 0.12);
       --radius-md: 0.5rem;
       --radius-lg: 1rem;
       --radius-full: 9999px;
@@ -43,9 +47,6 @@
       --section-padding: 80px;
     }
 
-    /* ============================================================
-               2. RESET Y BASE
-               ============================================================ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -56,7 +57,7 @@
       padding-top: 72px;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; height: auto; }
     .container {
       max-width: var(--container-max);
       margin: 0 auto;
@@ -64,8 +65,8 @@
     }
 
     /* ============================================================
-               3. HEADER
-               ============================================================ */
+    HEADER (Glassmorphism)
+    ============================================================ */
     .header {
       position: fixed;
       top: 0;
@@ -183,11 +184,10 @@
     }
 
     /* ============================================================
-               4. HERO
-               ============================================================ */
+    HERO
+    ============================================================ */
     .hero {
-      background: linear-gradient(135deg, rgba(0, 30, 64, 0.88), rgba(0, 51, 102, 0.80)),
-                  url('https://placehold.co/1920x1080/001e40/FFFFFF?text=Panama+City+Skyline');
+      background: linear-gradient(135deg, rgba(0, 30, 64, 0.75), rgba(0, 51, 102, 0.70)), url('https://i.imgur.com/vrPXJLl.jpeg');
       background-size: cover;
       background-position: center;
       padding: 100px 24px;
@@ -207,7 +207,6 @@
     }
     .hero h1 i { color: var(--accent); font-style: normal; }
     .hero p {
-      font-family: var(--font-body);
       font-size: 18px;
       line-height: 1.6;
       opacity: 0.9;
@@ -234,13 +233,13 @@
       gap: 10px;
     }
     .btn-secondary {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(4px);
       color: #fff;
-      border: 2px solid rgba(255,255,255,0.4);
+      border: 2px solid rgba(255, 255, 255, 0.4);
     }
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.25);
+      background: rgba(255, 255, 255, 0.25);
       transform: translateY(-3px);
     }
     .btn-primary {
@@ -252,12 +251,12 @@
       background: var(--accent-hover);
       border-color: var(--accent-hover);
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(234,128,0,0.35);
+      box-shadow: 0 8px 30px rgba(234, 128, 0, 0.35);
     }
 
     /* ============================================================
-               5. SECCIÓN TOURS
-               ============================================================ */
+    SECCIÓN TOURS
+    ============================================================ */
     .section-tours {
       padding: var(--section-padding) 24px;
       background: var(--surface);
@@ -274,7 +273,6 @@
       margin-bottom: 8px;
     }
     .section-header p {
-      font-family: var(--font-body);
       font-size: 16px;
       color: var(--on-surface-variant);
       max-width: 600px;
@@ -386,7 +384,6 @@
       line-height: 1.3;
     }
     .tour-card-body p {
-      font-family: var(--font-body);
       font-size: 0.9rem;
       color: var(--on-surface-variant);
       line-height: 1.5;
@@ -438,15 +435,210 @@
       background: var(--accent-hover);
       border-color: var(--accent-hover);
     }
+    .btn-sm-detail {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-sm-detail:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
 
     /* ============================================================
-               6. TRASLADOS
-               ============================================================ */
+    MODAL (detalle del tour)
+    ============================================================ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: var(--surface-container-lowest);
+      border-radius: var(--radius-lg);
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px 36px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--on-surface-variant);
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--primary); }
+    .modal h2 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--primary);
+      margin-bottom: 8px;
+      padding-right: 40px;
+    }
+    .modal .modal-sub {
+      font-size: 16px;
+      color: var(--on-surface-variant);
+      margin-bottom: 20px;
+    }
+    .modal .modal-price {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 28px;
+      color: var(--accent);
+      display: inline-block;
+      background: rgba(234, 128, 0, 0.10);
+      padding: 4px 20px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+    .modal .modal-duration {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .modal .modal-duration i { margin-right: 6px; }
+
+    /* Tabla de precios (City Tours) */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .pricing-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+    .pricing-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e8eaec;
+    }
+    .pricing-table tr:nth-child(even) {
+      background: #f7f9fb;
+    }
+    .pricing-table tr:hover {
+      background: #eef2f5;
+    }
+
+    .modal .modal-section {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #e8eaec;
+    }
+    .modal .modal-section h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .modal .modal-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .modal .modal-section ul li {
+      padding: 4px 0 4px 28px;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--on-surface-variant);
+    }
+    .modal .modal-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary);
+    }
+    .modal .modal-section.excludes ul li::before {
+      background: #d32f2f;
+    }
+    .modal .modal-section.excludes ul li {
+      color: #d32f2f;
+    }
+    .modal .modal-section.excludes {
+      background: #fef6f6;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      border-left: 4px solid #d32f2f;
+    }
+    .modal .modal-section.excludes h4 { color: #d32f2f; }
+
+    .modal .modal-tips {
+      background: #e8f5e9;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 16px;
+      border-left: 4px solid var(--secondary);
+    }
+    .modal .modal-tips h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--secondary);
+    }
+    .modal .modal-tips ul li::before {
+      background: var(--secondary);
+    }
+    .modal .modal-tips ul li {
+      color: var(--on-surface-variant);
+    }
+
+    .modal .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .modal .modal-actions .btn {
+      flex: 1;
+      justify-content: center;
+      min-width: 140px;
+    }
+
+    /* ============================================================
+    TRASLADOS
+    ============================================================ */
     .section-transfers {
       padding: var(--section-padding) 24px;
       background: var(--surface-container-lowest);
-      border-top: 1px solid var(--surface-dim);
-      border-bottom: 1px solid var(--surface-dim);
+      border-top: 1px solid #d8dadc;
+      border-bottom: 1px solid #d8dadc;
     }
     .transfer-card {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
@@ -459,7 +651,20 @@
       justify-content: space-between;
       gap: 30px;
       box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
+    .transfer-card .transfer-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 40%;
+      opacity: 0.15;
+      object-fit: cover;
+      object-position: right;
+    }
+    .transfer-info { position: relative; z-index: 1; }
     .transfer-info h3 {
       font-family: var(--font-heading);
       font-weight: 700;
@@ -467,12 +672,11 @@
     }
     .transfer-info h3 i { color: var(--accent); }
     .transfer-info p {
-      font-family: var(--font-body);
       font-size: 16px;
       opacity: 0.8;
       max-width: 400px;
     }
-    .transfer-price { display: flex; flex-direction: column; align-items: center; }
+    .transfer-price { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
     .transfer-price .price-tag {
       font-family: var(--font-heading);
       font-weight: 800;
@@ -482,7 +686,6 @@
       color: var(--accent);
     }
     .transfer-price .price-sub {
-      font-family: var(--font-body);
       font-size: 14px;
       opacity: 0.7;
       margin-top: 4px;
@@ -501,16 +704,18 @@
       gap: 12px;
       background: var(--accent);
       color: #fff;
+      position: relative;
+      z-index: 1;
     }
     .btn-lg:hover {
       background: var(--accent-hover);
       transform: scale(1.02);
-      box-shadow: 0 8px 30px rgba(234,128,0,0.4);
+      box-shadow: 0 8px 30px rgba(234, 128, 0, 0.4);
     }
 
     /* ============================================================
-               7. FEATURES
-               ============================================================ */
+    FEATURES
+    ============================================================ */
     .section-features {
       padding: var(--section-padding) 24px;
       background: var(--surface);
@@ -552,18 +757,17 @@
       color: var(--primary);
     }
     .feature-item p {
-      font-family: var(--font-body);
       font-size: 0.9rem;
       color: var(--on-surface-variant);
       margin-top: 6px;
     }
 
     /* ============================================================
-               8. FOOTER
-               ============================================================ */
+    FOOTER
+    ============================================================ */
     .footer {
       background: var(--primary);
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       padding: 48px 24px 24px;
     }
     .footer-inner {
@@ -572,7 +776,7 @@
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 32px;
     }
     .footer-brand .logo { color: #fff; margin-bottom: 12px; }
@@ -604,7 +808,7 @@
     }
     .footer-whatsapp-btn:hover {
       transform: scale(1.04);
-      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
     }
     .footer-bottom {
       max-width: var(--container-max);
@@ -615,8 +819,8 @@
     }
 
     /* ============================================================
-               9. WHATSAPP FAB
-               ============================================================ */
+    WHATSAPP FAB
+    ============================================================ */
     .whatsapp-fab {
       position: fixed;
       bottom: 28px;
@@ -631,19 +835,19 @@
       align-items: center;
       justify-content: center;
       font-size: 36px;
-      box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
       transition: all 0.3s;
       border: none;
       cursor: pointer;
     }
     .whatsapp-fab:hover {
       transform: scale(1.08);
-      box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
     }
     .whatsapp-fab .tooltip {
       position: absolute;
       right: 72px;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-family: var(--font-body);
       font-size: 14px;
@@ -657,8 +861,8 @@
     .whatsapp-fab:hover .tooltip { opacity: 1; }
 
     /* ============================================================
-               10. RESPONSIVE
-               ============================================================ */
+    RESPONSIVE
+    ============================================================ */
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .tour-grid { grid-template-columns: repeat(2, 1fr); }
@@ -675,18 +879,18 @@
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(255,255,255,0.98);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(12px);
         flex-direction: column;
         padding: 24px 20px 40px;
         gap: 16px;
         box-shadow: var(--shadow-lg);
         transform: translateY(-120%);
-        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-        border-bottom: 1px solid var(--surface-dim);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid #e8eaec;
       }
       .nav-list.open { transform: translateY(0); }
-      .nav-list a { font-size: 1.1rem; width: 100%; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+      .nav-list a { font-size: 1.1rem; width: 100%; padding: 8px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
       .nav-list .nav-btn { width: 100%; justify-content: center; margin-top: 8px; }
 
       .hero h1 { font-size: 32px; }
@@ -700,6 +904,7 @@
 
       .transfer-card { flex-direction: column; text-align: center; padding: 32px 24px; }
       .transfer-info p { max-width: 100%; }
+      .transfer-card .transfer-bg { display: none; }
 
       .features-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .feature-item { padding: 24px 16px; }
@@ -712,6 +917,10 @@
       .whatsapp-fab .tooltip { display: none; }
 
       .disclaimer-box { flex-direction: column; align-items: center; text-align: center; }
+
+      .modal { padding: 28px 20px; }
+      .modal h2 { font-size: 22px; }
+      .modal .modal-actions .btn { min-width: 100%; }
     }
 
     @media (max-width: 480px) {
@@ -719,7 +928,14 @@
       .transfer-price .price-tag { font-size: 32px; }
       .btn-lg { width: 100%; justify-content: center; }
     }
+
+    .modal::-webkit-scrollbar { width: 6px; }
+    .modal::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
+    .modal::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
   </style>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚐</text></svg>">
+
 </head>
 <body>
 
@@ -788,7 +1004,6 @@
         <p>Explora la ciudad, la selva, el Canal y las playas con guías locales apasionados.</p>
       </div>
 
-      <!-- DISCLAIMER: Entradas no incluidas -->
       <div class="disclaimer-box">
         <i class="fas fa-info-circle"></i>
         <div>
@@ -796,392 +1011,31 @@
         </div>
       </div>
 
-      <!-- ===== CATEGORÍA 1: CITY TOURS ===== -->
-      <div class="tour-category">
-        <h3><i class="fas fa-city"></i> City Tours</h3>
-        <div class="tour-grid">
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Tour+Ciudad+%26+Canal" alt="Tour Ciudad y Canal">
-              <span class="price-chip">Desde $80</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Tour Ciudad de Panamá y Canal</h3>
-              <p>Descubre el Casco Viejo, Cerro Ancón, Calzada de Amador y las Esclusas de Miraflores.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 7.5h · <i class="fas fa-user"></i> Grupo reducido</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Tour Ciudad de Panamá y Canal"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Tour+Hist%C3%B3rico" alt="Tour Histórico">
-              <span class="price-chip">Desde $99</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Tour Histórico de Panamá</h3>
-              <p>Recorre Panamá Viejo y el Casco Viejo, con leyendas de conquistadores y calles empedradas.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-user"></i> Grupo reducido</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Tour Histórico de Panamá"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Combo+Canal%2BCiudad%2BMonos" alt="Combo">
-              <span class="price-chip">Desde $139</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Combo: Ciudad + Canal + Monos</h3>
-              <p>La experiencia definitiva: monos, Casco Viejo y el Canal de Panamá en un solo día.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 9-10h · <i class="fas fa-user"></i> Grupo reducido</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Combo Ciudad, Canal y Monos"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ===== CATEGORÍA 2: NATURALEZA Y ECO ===== -->
-      <div class="tour-category">
-        <h3><i class="fas fa-leaf"></i> Naturaleza y Eco-Aventura</h3>
-        <div class="tour-grid">
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/006d3d/FFFFFF?text=Isla+de+los+Monos" alt="Isla de los Monos">
-              <span class="price-chip">Desde $99</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Excursión Isla de los Monos</h3>
-              <p>Navega por el Canal y observa monos capuchinos y tamarinos en su hábitat natural.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 4-5h · <i class="fas fa-ship"></i> Paseo en bote</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Excursión Isla de los Monos"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/006d3d/FFFFFF?text=Aldea+Ember%C3%A1" alt="Aldea Emberá">
-              <span class="price-chip">Desde $116</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Aldea Emberá y Cascada</h3>
-              <p>Visita una comunidad indígena, navega en canoa tradicional y explora la selva tropical.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-users"></i> Cultural</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Aldea Emberá y Cascada"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/006d3d/FFFFFF?text=El+Valle+de+Ant%C3%B3n" alt="El Valle de Antón">
-              <span class="price-chip">Desde $125</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>El Valle de Antón</h3>
-              <p>Escápate al valle dentro de un volcán: mercado artesanal, cascadas y naturaleza exuberante.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 8-9h · <i class="fas fa-mountain"></i> Aventura</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="El Valle de Antón"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ===== CATEGORÍA 3: PLAYA Y AVENTURA ===== -->
-      <div class="tour-category">
-        <h3><i class="fas fa-umbrella-beach"></i> Playas y Aventura</h3>
-        <div class="tour-grid">
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/ea8000/FFFFFF?text=Caribe+Portobelo" alt="Aventura Caribe">
-              <span class="price-chip">Desde $179</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Aventura en el Caribe</h3>
-              <p>Snorkel en aguas caribeñas, explora las Venas Azules y el fuerte de Portobelo.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 10-11h · <i class="fas fa-ship"></i> Snorkel</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Aventura en el Caribe"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/ea8000/FFFFFF?text=Isla+Iguana" alt="Isla Iguana">
-              <span class="price-chip">Desde $159</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Isla Iguana (playa + snorkel)</h3>
-              <p>Playas de arena blanca y aguas turquesas, snorkel y naturaleza en el Pacífico panameño.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 9-10h · <i class="fas fa-ship"></i> Snorkel</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Isla Iguana"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/ea8000/FFFFFF?text=Catamar%C3%A1n+Taboga" alt="Catamarán Taboga">
-              <span class="price-chip">Desde $99</span>
-              <span class="price-chip incluye">¡Todo incluido!</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Catamarán Taboga (todo incluido)</h3>
-              <p>Relájate en un catamarán con almuerzo y barra libre, snorkel y sol en la isla de Taboga.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 7-8h · <i class="fas fa-utensils"></i> Almuerzo + barra</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Catamarán Taboga"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ===== CATEGORÍA 4: TOURS ESPECIALES ===== -->
-      <div class="tour-category">
-        <h3><i class="fas fa-star"></i> Tours Especiales</h3>
-        <div class="tour-grid">
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Fuerte+San+Lorenzo" alt="Fuerte San Lorenzo">
-              <span class="price-chip">Desde $125</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Fuerte San Lorenzo + Agua Clara</h3>
-              <p>Explora el fuerte colonial y las impresionantes esclusas de Agua Clara en el Canal.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 8-9h · <i class="fas fa-landmark"></i> Histórico</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Fuerte San Lorenzo y Agua Clara"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Tr%C3%A1nsito+Canal" alt="Tránsito Canal">
-              <span class="price-chip">Desde $149</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Tránsito parcial por el Canal</h3>
-              <p>A bordo del Pacific Queen, atraviesa las esclusas de Miraflores y Pedro Miguel.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 5-6h · <i class="fas fa-ship"></i> Experiencia única</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Tránsito parcial por el Canal"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Ballenas" alt="Avistamiento Ballenas">
-              <span class="price-chip">Desde $108</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Avistamiento de Ballenas</h3>
-              <p>Observa ballenas jorobadas en la bahía de Panamá (temporada: julio-octubre).</p>
-              <div class="meta"><i class="fas fa-clock"></i> 4-5h · <i class="fas fa-water"></i> Ecológico</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Avistamiento de Ballenas"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/003366/FFFFFF?text=Escala+Privada" alt="Escala Privada">
-              <span class="price-chip">Desde $80</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Escala privada en Panamá</h3>
-              <p>Aprovecha tu escala para conocer la ciudad con un guía privado, ideal para conexiones.</p>
-              <div class="meta"><i class="fas fa-clock"></i> 4-6h · <i class="fas fa-user"></i> Privado</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Escala privada en Panamá"> <i class="fab fa-whatsapp"></i> Reservar </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ===== CATEGORÍA 5: TOURS ADICIONALES (BAJO DEMANDA) ===== -->
-      <div class="tour-category">
-        <h3><i class="fas fa-ellipsis-h"></i> Tours Adicionales (bajo demanda)</h3>
-        <div class="tour-grid">
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Bird+Watching" alt="Bird Watching">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Bird Watching Tour</h3>
-              <p>Explora la Pipeline Road con un guía experto en aves tropicales.</p>
-              <div class="meta"><i class="fas fa-binoculars"></i> Avistamiento de aves</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Bird Watching Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Pesca+Gat%C3%BAn" alt="Pesca Lago Gatún">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Pesca en Lago Gatún</h3>
-              <p>Pesca deportiva en el lago del Canal, con guía y equipo incluido.</p>
-              <div class="meta"><i class="fas fa-fish"></i> Pesca deportiva</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Pesca en Lago Gatún"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Pesca+Altamar" alt="Pesca Alta Mar">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Pesca en Alta Mar</h3>
-              <p>Aventura de pesca en el Pacífico panameño, con todo el equipo necesario.</p>
-              <div class="meta"><i class="fas fa-ship"></i> Pesca en altamar</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Pesca en Alta Mar"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Bike+Tour" alt="Bike Tour">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Bike Tour Ciudad</h3>
-              <p>Recorre la Ciudad de Panamá en bicicleta, ideal para los amantes del deporte.</p>
-              <div class="meta"><i class="fas fa-bicycle"></i> Tour en bici</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Bike Tour Ciudad"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Bar+Crawl" alt="Bar Crawl">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Bar Crawl Casco Viejo</h3>
-              <p>Vive la noche en el Casco Viejo, con paradas en los mejores bares y rooftops.</p>
-              <div class="meta"><i class="fas fa-wine-glass-alt"></i> Tour nocturno</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Bar Crawl Casco Viejo"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Helicoptero" alt="Helicopter Tour">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Helicopter Tour</h3>
-              <p>Sobrevuela la ciudad y el Canal de Panamá en helicóptero, vistas inolvidables.</p>
-              <div class="meta"><i class="fas fa-helicopter"></i> Vistas aéreas</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Helicopter Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Food+Tour" alt="Food Tour">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Panama Food Tour</h3>
-              <p>Descubre la gastronomía panameña: desde carimañolas hasta mariscos frescos.</p>
-              <div class="meta"><i class="fas fa-utensils"></i> Tour culinario</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Panama Food Tour"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-card-image">
-              <img src="https://placehold.co/600x400/43474f/FFFFFF?text=Darien" alt="Darien Exploration">
-              <span class="price-chip">Bajo consulta</span>
-            </div>
-            <div class="tour-card-body">
-              <h3>Darien Exploration</h3>
-              <p>Aventura en la selva del Darién, para viajeros intrépidos que buscan lo remoto.</p>
-              <div class="meta"><i class="fas fa-tree"></i> Expedición</div>
-              <div class="tour-card-actions">
-                <a href="#" class="btn-sm btn-sm-outline">Ver más</a>
-                <button class="btn-sm btn-sm-whatsapp" data-tour="Darien Exploration"> <i class="fab fa-whatsapp"></i> Consultar </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <!-- Contenedor dinámico generado por JavaScript -->
+      <div id="toursContainer"></div>
 
     </div>
   </section>
 
   <!-- ============================================================
-  SECCIÓN TRASLADOS
+  MODAL (detalle del tour)
+  ============================================================ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div id="modalBody">
+        <!-- Generado por JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+  TRASLADOS
   ============================================================ -->
   <section class="section-transfers" id="transfers">
     <div class="container">
       <div class="transfer-card">
+        <img src="https://i.imgur.com/TiFp3EE.jpeg" alt="Vehículo ejecutivo" class="transfer-bg" loading="lazy">
         <div class="transfer-info">
           <h3><i class="fas fa-shuttle-van"></i> Traslado Aeropuerto</h3>
           <p>Llegada o salida desde el Aeropuerto Internacional de Tocumen. Servicio privado, puntual y con conductor profesional.</p>
@@ -1285,11 +1139,16 @@
   </a>
 
   <!-- ============================================================
-  JAVASCRIPT
+  JAVASCRIPT - TODA LA LÓGICA
   ============================================================ -->
   <script>
-    // 1. Configuración de WhatsApp
+    // ============================================================
+    // 1. CONFIGURACIÓN DE WHATSAPP
+    // ============================================================
     const PHONE = '50768468733';
+
+    // 🔥 URL DE TU GOOGLE APPS SCRIPT (YA INTEGRADA)
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz-nSEauzus8_bwNY59xC5edPBWuNNxb-8VH6Yc3yRfpK6XkGmh4yv3njODZW-Wc7WJ/exec';
 
     function openWhatsApp(message) {
       const encoded = encodeURIComponent(message);
@@ -1298,13 +1157,673 @@
       return false;
     }
 
-    // 2. Menú hamburguesa
+    // ============================================================
+    // 2. DATOS DE LOS TOURS (BASE - SE ACTUALIZAN CON LA API)
+    // ============================================================
+    let toursData = {
+      'Tour Ciudad de Panamá y Canal': {
+        id: 'tour-ciudad-canal',
+        categoria: 'City Tours',
+        imagen: 'https://i.imgur.com/ZLpwqoe.jpeg',
+        precio: 'Desde $80',
+        duracion: '7.5 horas',
+        descripcion: 'Sumérgete en la vibrante capital panameña con este tour completo que combina historia, modernidad y la maravilla del Canal.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores miradores',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entradas a las Esclusas de Miraflores ($17.25 por adulto)',
+          'Entrada al IMAX 3D'
+        ],
+        tips: ['Llevar ropa cómoda y zapatos para caminar', 'Bloqueador solar y sombrero', 'Cámara para fotos', 'Efectivo para entradas y propinas'],
+        isCityTour: true,
+        pricing: [
+          { personas: '1 persona', precio: '$150.00' },
+          { personas: '2 personas', precio: '$75.00 c/u' },
+          { personas: '3-4 personas', precio: '$65.00 c/u' },
+          { personas: '5-6 personas', precio: '$62.00 c/u' },
+          { personas: '7-10 personas', precio: '$58.00 c/u' },
+          { personas: '11-25 personas', precio: '$55.00 c/u' },
+          { personas: '26+ personas', precio: '$52.00 c/u' }
+        ]
+      },
+      'Tour Histórico de Panamá': {
+        id: 'tour-historico',
+        categoria: 'City Tours',
+        imagen: 'https://i.imgur.com/4P08Qka.jpeg',
+        precio: 'Desde $99',
+        duracion: '7-8 horas',
+        descripcion: 'Viaja al pasado con este recorrido que explora los orígenes de la ciudad de Panamá, desde Panamá Viejo hasta el Casco Viejo.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los puntos históricos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entradas a Panamá Viejo',
+          'Entrada a Mi Pueblito'
+        ],
+        tips: ['Calzado cómodo para caminar', 'Bloqueador solar y gorra', 'Llevar efectivo para entradas', 'Cámara para fotografías'],
+        isCityTour: true,
+        pricing: [
+          { personas: '1 persona', precio: '$150.00' },
+          { personas: '2 personas', precio: '$75.00 c/u' },
+          { personas: '3-4 personas', precio: '$65.00 c/u' },
+          { personas: '5-6 personas', precio: '$62.00 c/u' },
+          { personas: '7-10 personas', precio: '$58.00 c/u' },
+          { personas: '11-25 personas', precio: '$55.00 c/u' },
+          { personas: '26+ personas', precio: '$52.00 c/u' }
+        ]
+      },
+      'Combo Ciudad, Canal y Monos': {
+        id: 'combo-ciudad-canal-monos',
+        categoria: 'City Tours',
+        imagen: 'https://i.imgur.com/0Mc2pa8.png',
+        precio: 'Desde $139',
+        duracion: '9-10 horas',
+        descripcion: 'El tour más completo que combina naturaleza, cultura e ingeniería: monos, Casco Viejo y el Canal de Panamá en un solo día.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores puntos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote por el Canal',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: [
+          'Almuerzo y bebidas',
+          'Propinas para el guía y conductor',
+          'Entrada a las Esclusas de Miraflores ($17.25)',
+          'Entrada al IMAX 3D'
+        ],
+        tips: ['Ropa cómoda y zapatos para caminar', 'Bloqueador solar y repelente', 'Cámara con zoom para monos', 'Efectivo para entradas'],
+        isCityTour: true,
+        pricing: [
+          { personas: '1 persona', precio: '$150.00' },
+          { personas: '2 personas', precio: '$75.00 c/u' },
+          { personas: '3-4 personas', precio: '$65.00 c/u' },
+          { personas: '5-6 personas', precio: '$62.00 c/u' },
+          { personas: '7-10 personas', precio: '$58.00 c/u' },
+          { personas: '11-25 personas', precio: '$55.00 c/u' },
+          { personas: '26+ personas', precio: '$52.00 c/u' }
+        ]
+      },
+      'Excursión Isla de los Monos': {
+        id: 'isla-monos',
+        categoria: 'Naturaleza y Eco-Aventura',
+        imagen: 'https://i.imgur.com/qlD04m1.jpeg',
+        precio: 'Desde $99',
+        duracion: '4-5 horas',
+        descripcion: 'Embárcate en una aventura ecológica navegando por el Canal de Panamá para observar monos capuchinos y tamarinos en su hábitat natural.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el trayecto',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote por el Canal',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a atracciones adicionales'],
+        tips: ['Llevar repelente de insectos', 'Bloqueador solar', 'Cámara con zoom', 'Ropa ligera y cómoda'],
+        isCityTour: false
+      },
+      'Aldea Emberá y Cascada': {
+        id: 'embera',
+        categoria: 'Naturaleza y Eco-Aventura',
+        imagen: 'https://i.imgur.com/F3xl8oc.jpeg',
+        precio: 'Desde $116',
+        duracion: '7-8 horas',
+        descripcion: 'Una inmersión cultural en la comunidad indígena Emberá con navegación en canoa, bailes típicos, artesanías y una cascada escondida en la selva.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el camino',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en canoa tradicional',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y la comunidad', 'Compras de artesanías'],
+        tips: ['Ropa ligera y calzado para caminar', 'Repelente de insectos', 'Efectivo para artesanías', 'Traje de baño para la cascada'],
+        isCityTour: false
+      },
+      'El Valle de Antón': {
+        id: 'el-valle',
+        categoria: 'Naturaleza y Eco-Aventura',
+        imagen: 'https://i.imgur.com/Gs4yy6D.jpeg',
+        precio: 'Desde $125',
+        duracion: '8-9 horas',
+        descripcion: 'Escapada a El Valle, un pueblo enclavado en el cráter de un volcán extinto. Mercado artesanal, cascadas, senderos y biodiversidad.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en los miradores',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita al mercado artesanal',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a atracciones locales (zoológico, serpentario, etc.)'],
+        tips: ['Ropa cómoda y zapatos de senderismo', 'Bloqueador solar y repelente', 'Cámara para fotos', 'Efectivo para compras'],
+        isCityTour: false
+      },
+      'Aventura en el Caribe': {
+        id: 'caribe',
+        categoria: 'Playas y Aventura',
+        imagen: 'https://i.imgur.com/EoNNlwI.jpeg',
+        precio: 'Desde $179',
+        duracion: '10-11 horas',
+        descripcion: 'Descubre la costa caribeña de Panamá con snorkel en aguas cristalinas, exploración de fuertes coloniales y playas paradisíacas.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Equipo de snorkel',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a los fuertes de Portobelo'],
+        tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Repelente de insectos', 'Efectivo para entradas'],
+        isCityTour: false
+      },
+      'Isla Iguana': {
+        id: 'isla-iguana',
+        categoria: 'Playas y Aventura',
+        imagen: 'https://i.imgur.com/EoNNlwI.jpeg',
+        precio: 'Desde $159',
+        duracion: '9-10 horas',
+        descripcion: 'Isla Iguana es un paraíso virgen en el Golfo de Panamá. Playas de arena blanca, aguas turquesas y snorkel con peces coloridos.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote a la isla',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Equipo de snorkel adicional'],
+        tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Snorkel (opcional)', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Catamarán Taboga': {
+        id: 'taboga',
+        categoria: 'Playas y Aventura',
+        imagen: 'https://i.imgur.com/9hAzdA2.jpeg',
+        precio: 'Desde $99',
+        duracion: '7-8 horas',
+        descripcion: 'Catamarán con todo incluido hacia la "Isla de las Flores". Snorkel, almuerzo, barra libre y vistas espectaculares de la bahía de Panamá.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el mar',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Catamarán con almuerzo y barra libre',
+          'Snorkel básico',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Propinas para la tripulación', 'Compras adicionales a bordo'],
+        tips: ['Traje de baño y toalla', 'Bloqueador solar', 'Ropa ligera', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Fuerte San Lorenzo y Agua Clara': {
+        id: 'san-lorenzo',
+        categoria: 'Tours Especiales',
+        imagen: 'https://i.imgur.com/PYsOwOk.jpeg',
+        precio: 'Desde $125',
+        duracion: '8-9 horas',
+        descripcion: 'Explora dos maravillas en un día: las Esclusas de Agua Clara, el Puente Atlántico y el histórico Fuerte de San Lorenzo.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el trayecto',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y conductor', 'Entradas a las atracciones (Esclusas y Fuerte)'],
+        tips: ['Ropa cómoda y calzado para caminar', 'Bloqueador solar y gorra', 'Cámara para fotos', 'Efectivo para entradas'],
+        isCityTour: false
+      },
+      'Tránsito parcial por el Canal': {
+        id: 'transito-canal',
+        categoria: 'Tours Especiales',
+        imagen: 'https://i.imgur.com/fz20d3z.jpeg',
+        precio: 'Desde $149',
+        duracion: '5-6 horas',
+        descripcion: 'Vive la experiencia de navegar a bordo del Pacific Queen, atravesando las esclusas de Miraflores y Pedro Miguel.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en el Canal',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en el Pacific Queen',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para la tripulación'],
+        tips: ['Ropa cómoda', 'Bloqueador solar', 'Cámara para fotos', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Avistamiento de Ballenas': {
+        id: 'ballenas',
+        categoria: 'Tours Especiales',
+        imagen: 'https://i.imgur.com/JXT5Yp7.jpeg',
+        precio: 'Desde $108',
+        duracion: '4-5 horas',
+        descripcion: 'Entre julio y octubre, observa ballenas jorobadas en su entorno natural en la bahía de Panamá. Guías expertos te contarán todo sobre su comportamiento.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel (dentro de la ciudad)',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Paseo en bote para avistamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía y tripulación'],
+        tips: ['Ropa ligera', 'Bloqueador solar', 'Cámara con zoom', 'Repelente de insectos'],
+        isCityTour: false
+      },
+      'Escala privada en Panamá': {
+        id: 'escala',
+        categoria: 'Tours Especiales',
+        imagen: 'https://i.imgur.com/t1sOAzi.jpeg',
+        precio: 'Desde $80',
+        duracion: '4-6 horas',
+        descripcion: 'Aprovecha al máximo tu escala en el Aeropuerto de Tocumen con un tour privado personalizado a tu tiempo y gustos.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en el aeropuerto',
+          'Agua embotellada',
+          'Paradas fotográficas personalizadas',
+          'Traslado ida y vuelta desde el aeropuerto',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Entradas a atracciones'],
+        tips: ['Ropa cómoda', 'Pasaporte para identificación', 'Cámara para fotos', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Bird Watching Tour': {
+        id: 'birdwatching',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/OUi2x77.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Flexible',
+        descripcion: 'Panamá es un paraíso para los observadores de aves con más de 1000 especies. Recorre la Pipeline Road con un guía ornitólogo experto.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en los mejores avistamientos',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Equipo adicional (binoculares)'],
+        tips: ['Ropa de colores neutros', 'Zapatos cómodos', 'Binoculares (si tienes)', 'Repelente de insectos'],
+        isCityTour: false
+      },
+      'Pesca en Lago Gatún': {
+        id: 'pesca-gatun',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/lWpiGR4.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Flexible',
+        descripcion: 'Pesca deportiva en el lago Gatún, parte del sistema del Canal. Pez aguja, pez vela y tilapia en un entorno selvático único.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en el lago',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Barco de pesca y equipo',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Licencias de pesca (si aplica)'],
+        tips: ['Ropa ligera', 'Bloqueador solar', 'Gorra', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Pesca en Alta Mar': {
+        id: 'pesca-altamar',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/k47UdSQ.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Flexible',
+        descripcion: 'Sal a mar abierto en busca de atún, dorado, pez vela y marlin en el Pacífico panameño. Capitán experimentado y equipo de primera calidad.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en la costa',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Barco de pesca y equipo completo',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para la tripulación', 'Licencias de pesca'],
+        tips: ['Ropa ligera', 'Bloqueador solar', 'Gorra', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Bike Tour Ciudad': {
+        id: 'bike',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/M4Xat9K.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Flexible',
+        descripcion: 'Descubre la Ciudad de Panamá sobre dos ruedas: Calzada de Amador, Casco Viejo y Cinta Costera. La forma más activa de explorar la capital.',
+        incluye: [
+          'Transporte privado ida y vuelta',
+          'Recogida en su hotel',
+          'Agua embotellada',
+          'Paradas fotográficas en los puntos clave',
+          'Traslado ida y vuelta desde su alojamiento',
+          'Bicicleta y casco',
+          'Visita a centro de artesanías (opcional)'
+        ],
+        noIncluye: ['Almuerzo y bebidas', 'Propinas para el guía', 'Seguro personal'],
+        tips: ['Ropa deportiva cómoda', 'Bloqueador solar', 'Agua adicional', 'Efectivo para propinas'],
+        isCityTour: false
+      },
+      'Bar Crawl Casco Viejo': {
+        id: 'bar-crawl',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/IkeoDXB.png',
+        precio: 'Bajo consulta',
+        duracion: '3-4 horas',
+        descripcion: 'Vive la vibrante vida nocturna del Casco Viejo con un guía local. Recorre los mejores bares y rooftops del barrio histórico.',
+        incluye: ['Guía bilingüe', 'Recorrido por 3-4 bares', 'Cóctel de bienvenida', 'Recomendaciones exclusivas'],
+        noIncluye: ['Bebidas adicionales', 'Propinas para el guía', 'Transporte de regreso'],
+        tips: ['Ropa elegante casual', 'Identificación oficial', 'Efectivo para gastos adicionales'],
+        isCityTour: false
+      },
+      'Helicopter Tour': {
+        id: 'helicoptero',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/9bLe4EW.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Variable',
+        descripcion: 'Sobrevuela la Ciudad de Panamá y el Canal en helicóptero. Vistas aéreas del skyline, el Puente de las Américas y las esclusas.',
+        incluye: ['Helicóptero privado', 'Piloto experimentado', 'Recorrido personalizado', 'Seguro de vuelo'],
+        noIncluye: ['Propinas para el piloto', 'Transporte al helipuerto'],
+        tips: ['Llegar 30 minutos antes', 'Cámara para fotos aéreas', 'Ropa cómoda'],
+        isCityTour: false
+      },
+      'Panama Food Tour': {
+        id: 'food',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/LEgsnYi.jpeg',
+        precio: 'Bajo consulta',
+        duracion: '3-4 horas',
+        descripcion: 'Explora la gastronomía panameña: carimañolas, empanadas, ceviche y mariscos frescos en los mejores lugares escondidos de la ciudad.',
+        incluye: ['Guía gastronómico', 'Muestras de comida en 5-6 paradas', 'Bebida típica', 'Recomendaciones exclusivas'],
+        noIncluye: ['Propinas para el guía', 'Compras adicionales'],
+        tips: ['Ven con hambre', 'Ropa cómoda', 'Cámara para fotos de comida'],
+        isCityTour: false
+      },
+      'Darien Exploration': {
+        id: 'darien',
+        categoria: 'Tours Adicionales',
+        imagen: 'https://i.imgur.com/Ba4qHyu.jpeg',
+        precio: 'Bajo consulta',
+        duracion: 'Multi-día',
+        descripcion: 'Aventura en la selva del Darién. Comunidades indígenas, senderos selváticos y biodiversidad asombrosa para viajeros intrépidos.',
+        incluye: ['Transporte especializado', 'Guía experto en selva', 'Equipo de campamento', 'Comidas incluidas', 'Seguro de viaje'],
+        noIncluye: ['Propinas para el guía', 'Equipo personal adicional', 'Seguro médico adicional'],
+        tips: ['Preparación física', 'Ropa de selva', 'Repelente de insectos fuerte', 'Botiquín personal'],
+        isCityTour: false
+      }
+    };
+
+    // ============================================================
+    // 3. GENERAR TOURS DINÁMICAMENTE
+    // ============================================================
+    function buildTourCard(key, tour) {
+      const isIncluye = tour.noIncluye && tour.noIncluye.length > 0;
+      const incluyeChip = isIncluye ? '' : '<span class="price-chip incluye">¡Todo incluido!</span>';
+
+      return `
+        <div class="tour-card">
+          <div class="tour-card-image">
+            <img src="${tour.imagen}" alt="${key}" loading="lazy" width="600" height="338">
+            <span class="price-chip">${tour.precio}</span>
+            ${incluyeChip}
+          </div>
+          <div class="tour-card-body">
+            <h3>${key}</h3>
+            <p>${tour.descripcion.split('.')[0]}.</p>
+            <div class="meta">
+              <i class="fas fa-clock"></i> ${tour.duracion}
+              ${tour.categoria ? ` · <i class="fas fa-tag"></i> ${tour.categoria}` : ''}
+            </div>
+            <div class="tour-card-actions">
+              <button class="btn-sm btn-sm-detail" onclick="openModal('${key}')">
+                <i class="fas fa-info-circle"></i> Ver más
+              </button>
+              <button class="btn-sm btn-sm-whatsapp" data-tour="${key}">
+                <i class="fab fa-whatsapp"></i> Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function buildCategory(categoryName, tours) {
+      const iconMap = {
+        'City Tours': 'city',
+        'Naturaleza y Eco-Aventura': 'leaf',
+        'Playas y Aventura': 'umbrella-beach',
+        'Tours Especiales': 'star',
+        'Tours Adicionales': 'ellipsis-h'
+      };
+      const icon = iconMap[categoryName] || 'tag';
+      let html = `<div class="tour-category"><h3><i class="fas fa-${icon}"></i> ${categoryName}</h3><div class="tour-grid">`;
+      tours.forEach(([key, tour]) => {
+        html += buildTourCard(key, tour);
+      });
+      html += '</div></div>';
+      return html;
+    }
+
+    function renderTours() {
+      const container = document.getElementById('toursContainer');
+      const categories = {};
+
+      Object.entries(toursData).forEach(([key, tour]) => {
+        const cat = tour.categoria || 'Otros';
+        if (!categories[cat]) categories[cat] = [];
+        categories[cat].push([key, tour]);
+      });
+
+      let html = '';
+      const order = ['City Tours', 'Naturaleza y Eco-Aventura', 'Playas y Aventura', 'Tours Especiales', 'Tours Adicionales'];
+      order.forEach(cat => {
+        if (categories[cat]) {
+          html += buildCategory(cat, categories[cat]);
+          delete categories[cat];
+        }
+      });
+      Object.entries(categories).forEach(([cat, tours]) => {
+        html += buildCategory(cat, tours);
+      });
+
+      container.innerHTML = html;
+
+      // Reasignar eventos a los botones de WhatsApp (ya que se recrean)
+      document.querySelectorAll('.btn-sm-whatsapp').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const tourName = this.getAttribute('data-tour');
+          const message = `Hola, me interesa el tour: "${tourName}" de Panama Transit & Tours. ¿Tienen disponibilidad y precio final?`;
+          openWhatsApp(message);
+        });
+      });
+    }
+
+    // ============================================================
+    // 4. MODAL
+    // ============================================================
+    function openModal(tourKey) {
+      const tour = toursData[tourKey];
+      if (!tour) return;
+
+      const modal = document.getElementById('modalOverlay');
+      const body = document.getElementById('modalBody');
+
+      let html = `
+        <h2>${tourKey}</h2>
+        <div class="modal-sub">${tour.categoria || 'Tour'}</div>
+        <div class="modal-price">${tour.precio}</div>
+        <div class="modal-duration"><i class="fas fa-clock"></i> Duración: ${tour.duracion}</div>
+        <p style="font-size: 1rem; color: var(--on-surface-variant);">${tour.descripcion}</p>
+      `;
+
+      if (tour.isCityTour && tour.pricing) {
+        html += `
+          <div class="modal-section" style="border-top: none; margin-top: 8px;">
+            <h4><i class="fas fa-tag" style="color: var(--accent);"></i> Tarifas por persona (City Tour)</h4>
+            <table class="pricing-table">
+              <thead>
+                <tr><th>Número de personas</th><th>Precio por persona</th></tr>
+              </thead>
+              <tbody>
+                ${tour.pricing.map(p => `<tr><td>${p.personas}</td><td>${p.precio}</td></tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      html += `
+        <div class="modal-section">
+          <h4><i class="fas fa-check-circle" style="color: var(--secondary);"></i> ¿Qué incluye?</h4>
+          <ul>
+            ${tour.incluye.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="modal-section excludes">
+          <h4><i class="fas fa-times-circle"></i> ¿Qué NO incluye?</h4>
+          <ul>
+            ${tour.noIncluye.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="modal-tips">
+          <h4><i class="fas fa-lightbulb" style="color: var(--secondary);"></i> Recomendaciones</h4>
+          <ul>
+            ${tour.tips.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="openWhatsApp('Hola, me interesa el tour: "${tourKey}" de Panama Transit & Tours. ¿Tienen disponibilidad y precio final?')">
+            <i class="fab fa-whatsapp"></i> Reservar ahora
+          </button>
+          <button class="btn btn-secondary" onclick="closeModal()" style="background: transparent; color: var(--primary); border: 2px solid var(--primary);">
+            <i class="fas fa-times"></i> Cerrar
+          </button>
+        </div>
+      `;
+
+      body.innerHTML = html;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+
+    // ============================================================
+    // 5. CARGAR DATOS DESDE GOOGLE APPS SCRIPT
+    // ============================================================
+    async function loadPricesFromAPI() {
+      try {
+        console.log('🔄 Cargando datos desde Google Apps Script...');
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Error al obtener los datos');
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.error || 'Error desconocido');
+        }
+
+        const data = result.data;
+        console.log('✅ Datos cargados:', data.length, 'tours');
+
+        data.forEach(item => {
+          const tourId = item.id;
+          let tourKey = null;
+          for (let key in toursData) {
+            if (toursData[key].id === tourId) {
+              tourKey = key;
+              break;
+            }
+          }
+
+          if (tourKey) {
+            const tour = toursData[tourKey];
+            if (item.precio) tour.precio = item.precio;
+            if (item.descripcion) tour.descripcion = item.descripcion;
+
+            if (tour.isCityTour && tour.pricing) {
+              const pricing = tour.pricing;
+              if (item.precio_1) pricing[0].precio = `$${parseFloat(item.precio_1).toFixed(2)}`;
+              if (item.precio_2) pricing[1].precio = `$${parseFloat(item.precio_2).toFixed(2)} c/u`;
+              if (item.precio_3_4) pricing[2].precio = `$${parseFloat(item.precio_3_4).toFixed(2)} c/u`;
+              if (item.precio_5_6) pricing[3].precio = `$${parseFloat(item.precio_5_6).toFixed(2)} c/u`;
+              if (item.precio_7_10) pricing[4].precio = `$${parseFloat(item.precio_7_10).toFixed(2)} c/u`;
+              if (item.precio_11_25) pricing[5].precio = `$${parseFloat(item.precio_11_25).toFixed(2)} c/u`;
+              if (item.precio_26_mas) pricing[6].precio = `$${parseFloat(item.precio_26_mas).toFixed(2)} c/u`;
+            }
+          }
+        });
+
+        renderTours();
+      } catch (error) {
+        console.warn('⚠️ No se pudo cargar la API, usando datos por defecto:', error);
+        renderTours();
+      }
+    }
+
+    // ============================================================
+    // 6. MENÚ HAMBURGUESA Y OTROS
+    // ============================================================
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('navList');
 
-    hamburger.addEventListener('click', function() {
-      navList.classList.toggle('open');
-    });
+    if (hamburger) {
+      hamburger.addEventListener('click', function() {
+        navList.classList.toggle('open');
+      });
+    }
 
     document.querySelectorAll('.nav-list a').forEach(link => {
       link.addEventListener('click', () => {
@@ -1312,42 +1831,41 @@
       });
     });
 
-    // 3. Header shadow al scroll
     const header = document.getElementById('header');
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 30) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 30) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     });
 
-    // 4. Botones de tour: mensaje dinámico
-    document.addEventListener('DOMContentLoaded', function() {
-      const tourButtons = document.querySelectorAll('.btn-sm-whatsapp');
-      tourButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const tourName = this.getAttribute('data-tour');
-          const message = `Hola, me interesa el tour: "${tourName}" de Panama Transit & Tours. ¿Tienen disponibilidad y precio final?`;
-          openWhatsApp(message);
-        });
-      });
-    });
-
-    // 5. Cerrar menú al redimensionar
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768) {
         navList.classList.remove('open');
       }
     });
 
-    // 6. Prevenir enlaces vacíos
     document.querySelectorAll('a[href="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
         if (this.getAttribute('onclick')) return;
         e.preventDefault();
       });
+    });
+
+    // ============================================================
+    // 7. INICIALIZAR
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      loadPricesFromAPI();
+      console.log('🚐 Panama Transit & Tours - Iniciando...');
     });
   </script>
 
